@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기술지원본부 주간 업무 보고 대시보드 (2025.04.07)</title>
+    <title>기술지원본부 주간 업무 보고 대시보드 (2025.04.14)</title>
     
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,25 +14,25 @@
     
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> 
     <style>
-        /* 기본 폰트 설정 (선택 사항) */
+        /* Default font setting (optional) */
         body {
-            font-family: 'Inter', sans-serif; /* Inter 폰트 또는 시스템 기본 폰트 */
+            font-family: 'Inter', sans-serif; /* Inter font or system default */
         }
-        /* 차트 컨테이너 스타일 */
+        /* Chart container style */
         .chart-container {
             position: relative;
             margin: auto;
-            height: 300px; /* 기본 높이 */
-            width: 95%;   /* 너비 조정 */
-            max-width: 600px; /* 최대 너비 */
-            margin-bottom: 2rem; /* 차트 간 간격 */
+            height: 300px; /* Default height */
+            width: 95%;   /* Adjust width */
+            max-width: 600px; /* Max width */
+            margin-bottom: 2rem; /* Spacing between charts */
         }
-        /* 작은 차트 컨테이너 */
+        /* Small chart container */
         .chart-container-small {
             height: 250px;
             max-width: 400px;
         }
-         /* 모바일 화면에서 차트 크기 조정 */
+         /* Adjust chart size on mobile */
         @media (max-width: 640px) {
             .chart-container {
                 height: 250px;
@@ -45,7 +45,7 @@
 </head>
 <body class="bg-gray-100 p-4 md:p-8">
 
-    <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">기술지원본부 주간 업무 보고 대시보드 (2025.04.07 기준)</h1>
+    <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">기술지원본부 주간 업무 보고 대시보드 (2025.04.14 기준)</h1>
 
     
     
@@ -78,12 +78,13 @@
         <div class="mb-6 px-4">
             <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
             <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 카카오카드: 클라우드 라이선스 코어 수 체크 방식 변경 요청 (POD 체크 필요)</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 기술지원 건수 분류 세분화 관련 통계 추출 방식 검토 및 데이터 집계 중</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 설치확인서 SignSquare 서명 사용 고객 피드백 조사 중 (2건 서명 요청 진행 중)</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 주택도시보증공사: SVN 포함된 WebSquare AI Studio 인스톨러 버전 요청 (개발 가이드에 SVN 포함 제공한다는 표기 오류로 인함)</li>
+                <li><span class="font-semibold text-green-600">[완료]</span> 메리츠화재: GPU 장비 설치 지원</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 기술지원 분류 세분화 관련 데이터 수집 및 통계 추출 방식 검토 중 (AI 활용)</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 설치확인서 SignSquare 서명 사용 고객 피드백 조사 후 관련 개선사항(이메일/카톡 서명 재요청 기능) 전달</li>
             </ul>
             <h3 class="text-lg font-medium text-gray-600 mt-4 mb-2">신규 라이선스</h3>
-            <p class="text-gray-600">총 16 core 신규 발급 (한국영상대학교)</p>
+            <p class="text-gray-600">총 12 core 신규 발급 (한국자산관리공사)</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"> 
@@ -101,7 +102,7 @@
                  
                 
                 <div>
-                    <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">진행 중 상세 (총 19건)</h3>
+                    <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">진행 중 상세 (총 12건)</h3>
                     <div class="chart-container chart-container-small">
                         <canvas id="wsInProgressDetailChart"></canvas>
                     </div>
@@ -125,10 +126,11 @@
          <div class="mb-6 px-4">
             <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
             <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-green-600">[완료]</span> 주택도시보증공사: 8시간 보증 업무 마비 장애 긴급 지원 (배포 파일 누락 추정)</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 우리카드 디지털채널: css.js 파일 깨짐 현상 테스트 환경 구성 중</li>
+                <li><span class="font-semibold text-green-600">[완료]</span> 신한은행 인터넷뱅킹: 형상관리 장애 발생 문제 해결 방문 지원</li>
+                <li><span class="font-semibold text-green-600">[완료]</span> NH농협은행: 뉴욕지점 구축 환경 ProWorks5 호환성 테스트</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 한국예탁결제원: TMS 관련 덤프 분석, 로그 분석, 개선 패치 작업 및 아이다어 요청</li>
             </ul>
-             <p class="text-gray-600 mt-4">정기 점검: 4 건</p>
+             <p class="text-gray-600 mt-4">정기 점검: 7 건</p>
         </div>
         <div>
             <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">기술지원 및 설치/패치 현황</h3>
@@ -147,12 +149,13 @@
             <ul class="list-disc list-inside text-gray-600 space-y-1">
                 <li><span class="font-semibold text-orange-600">[진행중]</span> 신한은행 기업뱅킹: 취약점 추가 접수 대응</li>
                 <li><span class="font-semibold text-orange-600">[진행중]</span> 의료원연합회 청주의료원: 문자열 마무리 현상</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 새마을금고: 브라우저 멈춤 현상 및 프린터 목록 오류 지원</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 새마을금고: 브라우저 멈춤 현상 대응 / 프린터 목록 오류 지원</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 신한은행 TheNext (종합금융): OfficeExcel mergeCell 오류 지원</li>
             </ul>
         </div>
         <div>
             <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">기술 문의 및 장애 대응 현황</h3>
-             <p class="text-sm text-gray-500 text-center mb-2">(참고: 완료 < 접수는 이월 건 포함 가능성)</p>
+             <p class="text-sm text-gray-500 text-center mb-2">(참고: 완료 건수는 이전 주 이월 건 포함 가능)</p>
             <div class="chart-container">
                 <canvas id="matrixWindowsStatusChart"></canvas>
             </div>
@@ -166,8 +169,7 @@
          <div class="mb-6 px-4">
             <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
             <ul class="list-disc list-inside text-gray-600 space-y-1">
-                 <li><span class="font-semibold text-green-600">[완료]</span> 하나은행 스마트창구: WebSquare Engine Downgrade 방안 전달</li>
-                 <li><span class="font-semibold text-green-600">[완료]</span> 한국증권금융 모바일뱅킹: 개발언어 변경 문의 대응</li>
+                 <li><span class="font-semibold text-green-600">[완료]</span> 한국증권금융 모바일뱅킹: 개발언어 변경에 따른 문의사항 대응</li>
             </ul>
         </div>
         <div>
@@ -210,7 +212,7 @@
         };
         const borderColors = Object.values(colors).map(c => c.replace('0.8', '1'));
 
-        // --- Chart Data for 2025.04.07 ---
+        // --- Chart Data for 2025.04.14 ---
 
         // 1. Overall Received Tickets Chart
         const overallReceivedCtx = document.getElementById('overallReceivedChart').getContext('2d');
@@ -220,7 +222,7 @@
                 labels: ['WebSquare/WebTop', 'ProWorks', 'Matrix Windows', 'Matrix Mobile'],
                 datasets: [{
                     label: '총 접수 건수',
-                    data: [119, 22, 3, 3], // Updated Data
+                    data: [108, 23, 2, 1], // Updated Data
                     backgroundColor: [colors.blue, colors.green, colors.yellow, colors.red],
                     borderColor: borderColors.slice(0, 4),
                     borderWidth: 1
@@ -241,7 +243,7 @@
                 labels: ['WebSquare/WebTop', 'ProWorks', 'Matrix Windows', 'Matrix Mobile'],
                 datasets: [{
                     label: '진행 중 건수 (누적)',
-                    data: [19, 8, 8, 1], // Updated Data
+                    data: [12, 11, 8, 0], // Updated Data
                     backgroundColor: [colors.blue, colors.green, colors.yellow, colors.red],
                     borderColor: borderColors.slice(0, 4),
                     borderWidth: 1
@@ -261,9 +263,9 @@
             data: {
                 labels: ['엔지니어 개별 문의', '서비스데스크 W-Tech'],
                 datasets: [
-                    { label: '접수', data: [72, 47], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '완료', data: [56, 44], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '진행중', data: [16, 3], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
+                    { label: '접수', data: [63, 45], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '완료', data: [55, 41], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '진행중', data: [8, 4], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
                 ]
             },
             options: {
@@ -281,7 +283,7 @@
                 labels: ['분석', '지라'],
                 datasets: [{
                     label: '진행 중 상세',
-                    data: [14, 5], // Updated Data (11+3 분석, 5+0 지라)
+                    data: [10, 2], // Updated Data (6+4 분석, 2+0 지라)
                     backgroundColor: [colors.lightBlue, colors.orange],
                     hoverOffset: 4
                 }]
@@ -290,7 +292,7 @@
                 responsive: true, maintainAspectRatio: false,
                 plugins: {
                     legend: { position: 'bottom' },
-                    tooltip: { /* Tooltip config kept from previous version */
+                    tooltip: { // Tooltip config kept
                         callbacks: {
                             label: function(context) {
                                 let label = context.label || ''; if (label) { label += ': '; }
@@ -302,7 +304,7 @@
                             }
                         }
                     },
-                    datalabels: { /* Datalabels config kept from previous version */
+                    datalabels: { // Datalabels config kept
                         formatter: (value, ctx) => {
                             let sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
                             let percentage = (value*100 / sum).toFixed(1) + "%";
@@ -322,7 +324,7 @@
                 labels: ['설치', '패치', '정기점검', '장애'],
                 datasets: [{
                     label: '지원 건수',
-                    data: [4, 4, 32, 0], // Updated Data
+                    data: [6, 1, 26, 0], // Updated Data
                     backgroundColor: [colors.purple, colors.lightBlue, colors.green, colors.red],
                     borderColor: [colors.purple, colors.lightBlue, colors.green, colors.red].map(c => c.replace('0.8', '1')),
                     borderWidth: 1
@@ -342,9 +344,9 @@
             data: {
                 labels: ['기술 문의/장애', '설치/패치'],
                 datasets: [
-                    { label: '접수', data: [20, 2], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '완료', data: [12, 2], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '진행중 (누적)', data: [8, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
+                    { label: '접수', data: [23, 0], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '완료', data: [12, 0], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '진행중 (누적)', data: [11, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
                 ]
             },
             options: {
@@ -361,8 +363,8 @@
             data: {
                 labels: ['기술 문의 및 장애 대응'],
                 datasets: [
-                    { label: '접수', data: [3], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '완료', data: [1], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '접수', data: [2], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '완료', data: [2], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
                     { label: '진행중 (누적)', data: [8], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
                 ]
             },
@@ -380,9 +382,9 @@
             data: {
                 labels: ['기술 문의/장애', '설치/패치'],
                  datasets: [
-                    { label: '접수', data: [3, 0], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '완료', data: [2, 0], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '진행중 (누적)', data: [1, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
+                    { label: '접수', data: [1, 0], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '완료', data: [1, 0], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '진행중 (누적)', data: [0, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
                 ]
             },
             options: {
