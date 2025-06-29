@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기술지원본부 주간 업무 보고 대시보드 (2025.06.23)</title>
+    <title>기술지원본부 주간 업무 보고 대시보드 (2025.06.30)</title>
     
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,7 +45,7 @@
 </head>
 <body class="bg-gray-100 p-4 md:p-8">
 
-    <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">기술지원본부 주간 업무 보고 대시보드 (2025.06.23 기준)</h1>
+    <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">기술지원본부 주간 업무 보고 대시보드 (2025.06.30 기준)</h1>
 
     
     
@@ -78,11 +78,14 @@
         <div class="mb-6 px-4">
             <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
             <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-orange-600">[진행중]</span> KCC: 웹스퀘어 5 SP5 리소스 AI 엔진 검증 테스트, 추가 오류 없음 보고</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 제주은행: 웹스퀘어, xtouch 솔루션 기능 내 속도 개선 가능 검토</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> KCC: 웹스퀘어 AI 기능 테스트를 위한 설치 요청 / 사전 조사 및 미팅 예정</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 제주은행: 모바일뱅킹 속도 개선 요청 (Xtouch 처리 과정 개선)</li>
+                <li><span class="font-semibold text-orange-600">[진행중]</span> 카카오카드: POD CPU 라이선스 체크방식 처리 완료 예상 일정 요청</li>
             </ul>
             <h3 class="text-lg font-medium text-gray-600 mt-4 mb-2">신규 라이선스</h3>
-            <p class="text-gray-600">총 36 core 신규 발급 (KCC MPM)</p>
+            <p class="text-gray-600">해당 주 신규 발급 없음</p>
+            <h3 class="text-lg font-medium text-gray-600 mt-4 mb-2">기타</h3>
+            <p class="text-gray-600">프로웍스 기술지원 정동훈 프로 퇴사 (6/30), 대체 인력 이은주 프로 입사 예정 (7/14)</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"> 
@@ -101,7 +104,7 @@
                  
                 
                 <div>
-                    <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">진행 중 상세 (총 20건)</h3>
+                    <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">진행 중 상세 (총 17건)</h3>
                     <div class="chart-container chart-container-small">
                         <canvas id="wsInProgressDetailChart"></canvas>
                     </div>
@@ -125,11 +128,11 @@
          <div class="mb-6 px-4">
             <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
             <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-green-600">[완료]</span> 주택도시보증공사: 배포요청 신규 작성탭 요청 내용 수정 가능 문의 답변</li>
-                <li><span class="font-semibold text-green-600">[완료]</span> KB저축은행: Windows 11 영향도 확인</li>
+                <li><span class="font-semibold text-green-600">[완료]</span> 교직원공제회: XDA DB CONNECTION 끊기는 현상 처리</li>
+                <li><span class="font-semibold text-green-600">[완료]</span> 주택도시보증공사: 기금 스튜디오 무한루프 행걸림 에러 등 다수 이슈 처리</li>
                 <li><span class="font-semibold text-orange-600">[진행중]</span> 신한은행 인터넷뱅킹: 멕시코/공통 WEB/WAS 서버 분리, 형상 테스트 완료 글로벌 지원중</li>
             </ul>
-             <p class="text-gray-600 mt-4">정기 점검: 18 건</p>
+             <p class="text-gray-600 mt-4">정기 점검: 8 건</p>
         </div>
         <div>
             <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">기술지원 및 설치/패치 현황</h3>
@@ -145,11 +148,7 @@
         <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">Matrix Windows 상세 현황</h2>
          <div class="mb-6 px-4">
             <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-green-600">[완료]</span> 신한투자증권: Matrix Windows(Gear) 바로가기 명 변경</li>
-                <li><span class="font-semibold text-green-600">[완료]</span> 신한은행: ComAgent CallFTP API 호출 후 WGear 기능 오류 처리</li>
-                <li><span class="font-semibold text-green-600">[완료]</span> 신한은행: Win 11 에서 txt 파일 다운로드 후 연결 프로그램이 아닌 notepad.exe 로 실행 방법 가이드 완료</li>
-            </ul>
+            <p class="text-gray-500">해당 주 신규 업데이트 없음</p>
         </div>
         <div>
             <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">기술 문의 및 장애 대응 현황</h3>
@@ -166,10 +165,7 @@
         <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">Matrix Mobile 상세 현황</h2>
          <div class="mb-6 px-4">
             <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                 <li><span class="font-semibold text-green-600">[완료]</span> 우리카드 디지털 채널: iOS앱 보안점검 / 로컬웹서버 포트 노출 보안조치 완료</li>
-                 <li><span class="font-semibold text-orange-600">[진행중]</span> 한국투자저축은행 모바일뱅킹: 앱 기동시 간헐적 성능 이슈</li>
-            </ul>
+            <p class="text-gray-500">해당 주 신규 업데이트 없음</p>
         </div>
         <div>
             <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">기술지원 및 설치/패치 현황</h3>
@@ -213,11 +209,11 @@
         };
         const borderColors = Object.values(colors).map(c => c.replace('0.8', '1'));
 
-        // --- Chart Data for 2025.06.23 ---
+        // --- Chart Data for 2025.06.30 ---
 
         // 1. Overall Received Tickets Chart
         const overallReceivedCtx = document.getElementById('overallReceivedChart').getContext('2d');
-        const overallReceivedData = [84, 14, 3, 1]; // Updated Data: WS 84, PW 14 (13+1), MW 3, MM 1
+        const overallReceivedData = [98, 30, 0, 0]; // Updated Data: WS 98, PW 30 (29+1), MW 0, MM 0
         const overallReceivedMaxVal = Math.max(...overallReceivedData);
         new Chart(overallReceivedCtx, {
             type: 'bar',
@@ -246,7 +242,7 @@
 
         // 2. Overall In-Progress Tickets Chart
         const overallInProgressCtx = document.getElementById('overallInProgressChart').getContext('2d');
-        const overallInProgressData = [20, 0, 13, 1]; // Updated Data: WS 20, PW 0, MW 13, MM 1
+        const overallInProgressData = [17, 3, 13, 1]; // Updated Data: WS 17, PW 3 (2+1), MW 13, MM 1
         const overallInProgressMaxVal = Math.max(...overallInProgressData);
         new Chart(overallInProgressCtx, {
             type: 'bar',
@@ -283,9 +279,9 @@
             data: {
                 labels: ['엔지니어 개별 문의', '서비스데스크 W-Tech'],
                 datasets: [
-                    { label: '접수', data: [62, 22], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '완료', data: [47, 17], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '진행중', data: [15, 5], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
+                    { label: '접수', data: [72, 26], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '완료', data: [61, 20], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '진행중', data: [11, 6], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
                 ]
             },
             options: {
@@ -303,7 +299,7 @@
                 labels: ['분석', '지라'],
                 datasets: [{
                     label: '진행 중 상세',
-                    data: [13, 7], // Updated Data (10+3 분석, 5+2 지라)
+                    data: [12, 5], // Updated Data (7+5 분석, 4+1 지라)
                     backgroundColor: [colors.lightBlue, colors.orange],
                     hoverOffset: 4
                 }]
@@ -339,7 +335,7 @@
 
         // 5. WebSquare Support Type Chart
         const wsSupportTypeCtx = document.getElementById('wsSupportTypeChart').getContext('2d');
-        const wsSupportTypeData = [3, 3, 57, 0]; // Updated Data
+        const wsSupportTypeData = [1, 2, 41, 1]; // Updated Data
         const wsSupportTypeMaxVal = Math.max(...wsSupportTypeData);
         new Chart(wsSupportTypeCtx, {
             type: 'bar',
@@ -373,9 +369,9 @@
             data: {
                 labels: ['기술 문의/장애', '설치/패치'],
                 datasets: [
-                    { label: '접수', data: [13, 1], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '완료', data: [13, 1], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '진행중 (누적)', data: [0, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
+                    { label: '접수', data: [29, 1], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '완료', data: [27, 0], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '진행중 (누적)', data: [2, 1], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
                 ]
             },
             options: {
@@ -387,7 +383,7 @@
 
         // 7. Matrix Windows Status Chart
         const matrixWindowsStatusCtx = document.getElementById('matrixWindowsStatusChart').getContext('2d');
-        const matrixWindowsData = [3, 3, 13]; // Updated Data: 접수 3, 완료 3, 진행중 13
+        const matrixWindowsData = [0, 0, 13]; // Updated Data: 접수 0, 완료 0, 진행중 13
         const matrixWindowsMaxVal = Math.max(...matrixWindowsData);
         new Chart(matrixWindowsStatusCtx, {
             type: 'bar',
@@ -421,8 +417,8 @@
             data: {
                 labels: ['기술 문의/장애', '설치/패치'],
                  datasets: [
-                    { label: '접수', data: [1, 0], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
-                    { label: '완료', data: [1, 0], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '접수', data: [0, 0], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, // Updated
+                    { label: '완료', data: [0, 0], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, // Updated
                     { label: '진행중 (누적)', data: [1, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } // Updated
                 ]
             },
