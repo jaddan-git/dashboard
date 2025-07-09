@@ -38,7 +38,6 @@
         }
         .table-wrapper {
              overflow-x: auto;
-             /* 세로 스크롤 제거를 위해 max-height 속성 삭제 */
         }
         #agentChart {
             max-height: 400px;
@@ -52,9 +51,9 @@
              margin-top: 1rem;
              margin-bottom: 1rem;
         }
-        .analysis-opinion p {
+        .analysis-opinion p, .analysis-opinion li {
             font-size: 0.875rem;
-            line-height: 1.25rem;
+            line-height: 1.5rem;
             color: #434a54;
         }
          .analysis-opinion strong {
@@ -100,15 +99,12 @@
                     </table>
                 </div>
                  <div class="analysis-opinion">
-                    <p>
-                        <strong class="font-semibold text-indigo-600">분석 의견:</strong>
-                        담당자별 지원 공수 및 가동률 편차가 큰편입니다. <strong>정윤경(70.3%)</strong>, <strong>강건(57.4%)</strong> 등 상위 인력은 상대적으로 높은 기여도를 보이지만, 특정 인원에게 업무가 집중되는 경향은 부하 관리가 필요합니다. (참고 - 가동률은 시스템에 기록된 기술 지원 공수만을 기준 / 기타 업무 시간은 반영히지 않음)
-                    </p>
-                     <ul class="list-disc list-inside space-y-1 text-sm md:text-base mt-3 text-gray-700">
-                         <li>담당자별 전문 제품, 담당 고객사 등을 고려한 업무 분배, 멘토링 제도 운영, 스터디 그룹 운영 예정 등</li>
-                         <li>2025년 기술지원본부 KPI를 수행함으로써 기술 역량 상향 평준화 및 업무 분산 노력</li>
-                         <li>상대적으로 가동률이 낮은 인력은 면담을 통해 원인(예: 내부 업무 비중, 교육 기간 등)을 파악</li>
-                         <li>업무 재배분, 추가 교육, 내부 프로젝트 투입 등 리소스 활용 방안 고려</li>
+                     <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>담당자별 지원 공수 편차가 크게 나타나며, 정윤경(456h), 오숙경(450.5h), 정동훈(434h) 등 특정 인원에게 업무가 집중되는 경향을 보임.</li>
+                        <li>이는 개인의 높은 업무 기여도를 나타내지만, 장기적으로는 업무 과부하 및 번아웃으로 이어질 수 있는 위험 요소임.</li>
+                        <li>반면, 김자영(117.5h) 등 일부 인원은 지원 공수가 평균(383.8h)에 비해 현저히 낮아 리소스 활용 관점에서 개선이 필요함.</li>
+                        <li>담당자별 전문 제품, 담당 고객사 등을 고려한 업무 재분배 및 다각화, 내부 스터디를 통한 기술 역량 상향 평준화 등 효율적인 리소스 관리 방안 모색이 시급함.</li>
                      </ul>
                 </div>
             </div>
@@ -136,17 +132,13 @@
                     </table>
                 </div>
                 <div class="analysis-opinion">
-                    <p>
-                        <strong class="font-semibold text-indigo-600">분석 의견:</strong>
-                        상위 10개 고객사에 지원 공수가 집중되는 경향을 보입니다. 특히 <strong>주택도시보증공사(235.5시간)</strong>, <strong>신한은행(234시간)</strong>, <strong>대법원(203.5시간)</strong> 등은 대규모 프로젝트 진행 또는 시스템 복잡성으로 인해 많은 지원이 필요한 것으로 분석됩니다. 
-                    </p>
-                    <ul class="list-disc list-inside space-y-1 text-sm md:text-base mt-3 text-gray-700">
-                        <li><strong>주택도시보증공사</strong>의 경우 StudioServer 설치에 따른 시행착오로 인한 공수 소비가 발생하였습니다.</li>
-                        <li><strong>신한은행</strong>은 글로벌 캐나다 등 다수 제품 설치에 소요된 공수 외에도 전통적으로 많은 기술문의가 접수되고 있는 고객입니다.</li>
-                        <li><strong>대법원</strong>은 오픈 및 안정화 등에 필요한 상주지원이 올초에 집중적으로 발생하였습니다.</li>
-                        <li><strong>우리카드, 한국예탁결제원, 농협은행</strong> 등은 <u>ProWorks</u> 관련 문의가 발생시 해결까지 상당한 시간들이 소요되고 있어 상대적으로 많은 시간을 소비함을 알 수 있습니다.</li>
-                        <li>그 외 사이트 중 <strong>가톨릭대학교</strong>의 경우 일반적인 기술지원보다 상당히 빈번한 질의가 계속되고 있어 주의를 요하고 있습니다.</li>
-                    </ul>
+                    <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>주택도시보증공사(235.5h), (주)신한은행(234h), 대법원(203.5h) 등 상위 10개 고객사에 대한 지원이 전체 공수의 약 28%를 차지하며 높은 집중도를 보임.</li>
+                        <li>이는 대규모 프로젝트 진행 또는 시스템 복잡성으로 인한 유지보수 요구 증가에 기인한 것으로 판단됨.</li>
+                        <li>특히 ProWorks 제품을 사용하는 고객사의 지원 공수가 높은 경향을 보임.</li>
+                        <li>향후 고객사별 지원 패턴(특정 모듈 문의, 특정 시기 집중 여부 등)을 상세 분석하여 선제적 기술 지원 체계를 마련하고, 계약 유형에 따른 리소스 배분 전략을 재검토할 필요가 있음.</li>
+                     </ul>
                 </div>
             </div>
 
@@ -175,10 +167,13 @@
                     </table>
                  </div>
                  <div class="analysis-opinion">
-                    <p>
-                        <strong class="font-semibold text-indigo-600">분석 의견:</strong>
-                        <strong>WebSquare</strong>가 전체 지원 공수의 <strong>68.4%</strong>를 차지하며 압도적인 비중을 차지합니다. <strong>ProWorks(25.0%)</strong> 역시 상당한 비중을 차지하며, 기타 제품(WebTop, Matrix Mobile 등)은 상대적으로 낮은 비중을 보이고 있습니다.
-                    </p>
+                    <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>WebSquare가 전체 지원의 68.4%로 가장 높은 비중을 차지하며, 시장 주력 제품임을 보여줌.</li>
+                        <li>ProWorks는 25.0%로 그 뒤를 잇고 있으며, 주로 대규모 시스템을 사용하는 특정 고객사에 집중되어 있음.</li>
+                        <li>기타 제품의 지원 비중은 1% 미만으로 미미한 수준임.</li>
+                        <li>제품별 기술 지원 요구사항 및 문의 유형을 데이터베이스화하여 FAQ 및 기술 문서를 강화하고, 이를 신규 인력 교육 자료로 활용하여 지원 품질을 표준화할 필요가 있음.</li>
+                     </ul>
                 </div>
             </div>
 
@@ -206,10 +201,12 @@
                     </table>
                  </div>
                   <div class="analysis-opinion">
-                    <p>
-                        <strong class="font-semibold text-indigo-600">분석 의견:</strong>
-                        기술 지원은 크게 <strong>유지보수(53.7%)</strong>와 <strong>프로젝트(45.2%)</strong>로 양분됩니다. 유지보수 비중이 소폭 높지만, 프로젝트성 지원 공수도 상당하여 신규 프로젝트 지원 및 기능 개선 및 오류 대응 등 다수의 기술지원 활동을 보여주고 있습니다. 이는 안정적인 유지보수 수익을 위한 인력 운용보다 <u>프로젝트 지원으로 인한 공수 소비</u>가 상당하게 발생하고 있음을 나타냅니다. 무상지원 및 영업지원은 이에 비해 미미한 수준입니다.
-                    </p>
+                     <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                      <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>기술 지원은 유지보수(53.7%)와 프로젝트(45.2%)로 양분되어 안정적인 운영 지원과 신규 사업 요구가 균형을 이루고 있음.</li>
+                        <li>이는 기존 고객 관리와 신규 시장 개척이 조화롭게 진행되고 있음을 시사함.</li>
+                        <li>무상지원 및 영업지원의 비중이 낮은 것은 긍정적이나, 전략적인 무상/영업지원은 신규 계약으로 이어질 수 있으므로 관련 데이터를 별도 관리하여 잠재 고객을 발굴하는 기회로 삼아야 함.</li>
+                      </ul>
                 </div>
             </div>
         </div>
@@ -218,17 +215,17 @@
             <h2 class="text-xl md:text-2xl font-semibold text-primary mb-4">결론 및 운영 방향</h2>
             <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border border-mediumgray">
                 <p class="text-sm md:text-base text-gray-800 leading-relaxed">
-                    2025년 1분기 기술지원 가동률 분석 결과를 보고하였습니다. 전반적으로 WebSquare 중심의 안정적인 지원이 이루어졌으나, 특정 고객사 및 담당자에게 업무가 편중되는 현상이 분석되었습니다.
-                    1분기 분석 결과를 토대로 향후 기술 지원 효율성 및 서비스 품질 향상을 위한 운영을 다음과 같이 하고자 합니다. :
+                    2025년 1분기 기술지원 가동률 분석 결과를 보고하겠습니다. 전반적으로 WebSquare 중심의 안정적인 지원이 이루어졌으나, 특정 고객사 및 담당자에게 업무가 편중되는 현상이 관찰되었습니다.
+                    향후 기술 지원 효율성 및 서비스 품질 향상을 위한 운영 방향은 다음과 같습니다:
                 </p>
                 <ul class="list-disc list-inside space-y-1 text-sm md:text-base mt-3 text-gray-700">
-                    <li><strong>업무 표준화 및 지식 관리 강화:</strong> 내부 기술지식DB 확대 및 지식 공유 활성화로 담당자 간 역량 편차 감소.</li>
-                    <li><strong>효율적인 자원 운영 방안 모색:</strong> 담당자별 부하 및 전문성을 고려한 유연한 인력 배치 / 담당자 역량 강화로 운영의 효율성 증대.</li>
-                    <li><strong>데이터 기반 대응 체계 강화:</strong> 정기적 데이터 분석을 통한 기술지원 트렌드 모니터링 및 이슈 발생 예상건에 대한 선제적 대응 체계 구축.</li>
-                    <li><strong>고객 만족도 관리 및 커뮤니케이션 채널 다양화:</strong> 정기적 고객 만족도 조사, 전사적 교육 및 고객 접점 채널 강화 등으로 잠재적 이슈 관리.</li>
+                    <li><strong>업무 표준화 및 지식 관리 강화:</strong> 내부 KB 구축 및 공유 활성화로 담당자 간 역량 편차를 줄여야 함.</li>
+                    <li><strong>효율적인 리소스 운영 방안 모색:</strong> 담당자별 부하 및 전문성 고려한 유연한 인력 배치, 역량 강화 지원으로 운영 효율성을 높여야 함.</li>
+                    <li><strong>데이터 기반 의사결정 강화:</strong> 정기적 데이터 분석 통한 트렌드 모니터링 및 선제적 대응 체계 구축에 활용해야 함.</li>
+                    <li><strong>고객 커뮤니케이션 채널 다양화 및 만족도 관리:</strong> 고객 만족도 조사, 교육 강화 등으로 고객 관계 증진 및 잠재 이슈 관리가 필요함.</li>
                 </ul>
                  <p class="text-sm md:text-base text-gray-800 leading-relaxed mt-4">
-                    지속적인 데이터 분석과 운영 개선을 통해 기술 지원 역량을 더욱 강화하겠습니다. 감사합니다.
+                    지속적인 데이터 분석과 운영 개선을 통해 기술 지원 역량 강화 및 고객 만족도 제고를 추진하겠습니다.
                 </p>
             </div>
         </section>
@@ -237,8 +234,10 @@
 
     <script>
         window.onload = function() {
+            // --- Register Plugins Globally ---
             Chart.register(ChartDataLabels);
-            
+
+            // --- Custom Plugin for Average Lines ---
             const averageLinePlugin = {
                 id: 'averageLine',
                 afterDraw: (chart) => {
@@ -278,26 +277,20 @@
             };
             Chart.register(averageLinePlugin);
 
-            const allAgentRawData = [
-                { name: '정윤경', hours: 334.5 }, { name: '강건', hours: 273.0 },
-                { name: '배승희', hours: 268.5 }, { name: '이기용', hours: 264.0 },
-                { name: '오숙경', hours: 256.5 }, { name: '안효경', hours: 253.0 },
-                { name: '위시온', hours: 242.5 }, { name: '곽다은', hours: 241.5 },
-                { name: '정동훈', hours: 240.5 }, { name: '남서영', hours: 235.8 },
-                { name: '이지현B', hours: 218.5 }, { name: '송태양', hours: 184.5 },
-                { name: '김자영', hours: 83.5 }
-            ];
+
+            // --- Data Preparation ---
+            const allAgentRawData = [{"name":"정윤경","hours":456.0},{"name":"오숙경","hours":450.5},{"name":"정동훈","hours":434.0},{"name":"위시온","hours":429.0},{"name":"곽다은","hours":420.5},{"name":"안효경","hours":419.5},{"name":"배승희","hours":414.0},{"name":"강건","hours":404.0},{"name":"남서영","hours":394.3},{"name":"이기용","hours":386.5},{"name":"이지현B","hours":369.5},{"name":"송태양","hours":293.5},{"name":"김자영","hours":117.5}];
             
             const customerDetailData = [
                 { name: '주택도시보증공사', totalHours: 235.5, breakdown: [ { product: 'ProWorks', type: '프로젝트', hours: 108.0 }, { product: 'WebSquare', type: '프로젝트', hours: 93.5 }, { product: 'ProWorks', type: '유지보수', hours: 34.0 } ] },
-                { name: '신한은행', totalHours: 234.0, breakdown: [ { product: 'ProWorks', type: '유지보수', hours: 198.5 }, { product: 'WebSquare', type: '유지보수', hours: 23.5 }, { product: 'WebTop', type: '유지보수', hours: 12.0 } ]},
+                { name: '(주)신한은행', totalHours: 234.0, breakdown: [ { product: 'ProWorks', type: '유지보수', hours: 198.5 }, { product: 'WebSquare', type: '유지보수', hours: 23.5 }, { product: 'WebTop', type: '유지보수', hours: 12.0 } ]},
                 { name: '대법원', totalHours: 203.5, breakdown: [ { product: 'WebSquare', type: '프로젝트', hours: 203.5 } ]},
                 { name: '우리카드', totalHours: 188.0, breakdown: [ { product: 'ProWorks', type: '유지보수', hours: 158.5 }, { product: 'WebSquare', type: '유지보수', hours: 21.0 }, { product: 'Matrix Mobile', type: '유지보수', hours: 8.5 } ]},
                 { name: '한국예탁결제원', totalHours: 160.0, breakdown: [ { product: 'ProWorks', type: '유지보수', hours: 130.0 }, { product: 'WebSquare', type: '유지보수', hours: 19.5 }, { product: 'ProWorks', type: '프로젝트', hours: 10.5 } ]},
                 { name: '농협은행IT부문', totalHours: 100.0, breakdown: [ { product: 'ProWorks', type: '유지보수', hours: 82.0 }, { product: 'WebSquare', type: '유지보수', hours: 18.0 } ]},
                 { name: '국립전파연구원', totalHours: 94.5, breakdown: [ { product: 'WebSquare', type: '프로젝트', hours: 94.5 } ]},
                 { name: '가톨릭대학교', totalHours: 70.0, breakdown: [ { product: 'WebSquare', type: '프로젝트', hours: 70.0 } ]},
-                { name: '교보생명보험', totalHours: 65.0, breakdown: [ { product: 'WebSquare', type: '유지보수', hours: 65.0 } ]},
+                { name: '교보생명보험(주)', totalHours: 65.0, breakdown: [ { product: 'WebSquare', type: '유지보수', hours: 65.0 } ]},
                 { name: '국군의무사령부', totalHours: 54.0, breakdown: [ { product: 'WebSquare', type: '프로젝트', hours: 54.0 } ]}
             ].sort((a,b) => b.totalHours - a.totalHours);
 
@@ -312,8 +305,7 @@
             const TOTAL_POSSIBLE_HOURS = NUM_AGENTS * Q1_PER_PERSON_HOURS;
             const TOTAL_UTILIZATION_RATE = (TOTAL_SUPPORT_HOURS / TOTAL_POSSIBLE_HOURS) * 100;
 
-            const totalAgentHours = allAgentRawData.reduce((sum, agent) => sum + agent.hours, 0);
-            const averageAgentHours = totalAgentHours / NUM_AGENTS;
+            const averageAgentHours = TOTAL_SUPPORT_HOURS / NUM_AGENTS;
             const allAgentData = allAgentRawData.map(agent => ({
                 ...agent,
                 utilization: parseFloat(((agent.hours / Q1_PER_PERSON_HOURS) * 100).toFixed(1)),
@@ -336,7 +328,7 @@
                 <ul class="list-disc list-inside space-y-1 text-sm md:text-base">
                     <li><strong>총 지원 공수:</strong> ${TOTAL_SUPPORT_HOURS.toLocaleString()}시간 (기준 인원 ${NUM_AGENTS}명의 1분기 <u>총 근무시간 ${TOTAL_POSSIBLE_HOURS.toLocaleString()}시간</u> 대비 <strong>${TOTAL_UTILIZATION_RATE.toFixed(1)}%</strong> 소요)</li>
                     <li><strong>주요 제품:</strong> <strong>WebSquare</strong>가 전체 지원의 <strong>68.4%</strong>를 차지하며 핵심 제품임을 재확인.</li>
-                    <li><strong>주요 고객사:</strong> <strong>주택도시보증공사, 신한은행, 대법원</strong> 등 특정 고객사에 대한 지원 공수 집중.</li>
+                    <li><strong>주요 고객사:</strong> <strong>주택도시보증공사, (주)신한은행, 대법원</strong> 등 특정 고객사에 대한 지원 공수 집중.</li>
                     <li><strong>담당자 효율성:</strong> 최고 가동률 <strong>${allAgentData[0].name}(${allAgentData[0].utilization}%)</strong>, 평균 가동률 <strong>${((averageAgentHours / Q1_PER_PERSON_HOURS) * 100).toFixed(1)}%</strong>.</li>
                     <li><strong>지원 유형:</strong> <strong>유지보수(53.7%)</strong>와 <strong>프로젝트(45.2%)</strong> 지원이 주를 이룸.</li>
                 </ul>
@@ -388,7 +380,8 @@
             const chartColors = ['#36A2EB', '#4BC0C0', '#FFCE56', '#FF6384', '#9966FF', '#FF9F40', '#4D5360', '#AC64AD', '#2ECC71', '#F1C40F', '#E74C3C', '#3498DB', '#8E44AD'];
             const supportTypeColors = ['#4BC0C0', '#FFCE56', '#36A2EB', '#C9CBCF'];
             const productColors = ['#4BC0C0', '#36A2EB', '#FFCE56', '#FF6384', '#C9CBCF'];
-            
+
+            // Agent Chart
             new Chart(document.getElementById('agentChart'), {
                 type: 'bar',
                 plugins: [averageLinePlugin],
@@ -404,8 +397,8 @@
                         datalabels: { display: false },
                         averageLine: {
                             lines: [
-                                { value: averageAgentHours, color: 'rgba(211, 47, 47, 1)', width: 2, dash: [6, 6], label: { content: `담당자 평균 (${averageAgentHours.toFixed(1)}시간)`, backgroundColor: 'rgba(211, 47, 47, 0.9)', font: { size: 12, weight: 'bold', color: 'white'} } },
-                                { value: Q1_PER_PERSON_HOURS, color: 'rgba(56, 142, 60, 1)', width: 2, label: { content: `1분기 기준 (${Q1_PER_PERSON_HOURS}시간)`, backgroundColor: 'rgba(56, 142, 60, 0.9)', font: { size: 12, weight: 'bold', color: 'white'} } }
+                                { value: averageAgentHours, color: 'rgba(211, 47, 47, 1)', width: 3, dash: [6, 6], label: { content: `담당자 평균 (${averageAgentHours.toFixed(1)}시간)`, backgroundColor: 'rgba(211, 47, 47, 0.8)', font: { size: 12, weight: 'bold', color: 'white'} } },
+                                { value: Q1_PER_PERSON_HOURS, color: 'rgba(56, 142, 60, 1)', width: 3, label: { content: `1분기 기준 (${Q1_PER_PERSON_HOURS}시간)`, backgroundColor: 'rgba(56, 142, 60, 0.8)', font: { size: 12, weight: 'bold', color: 'white'} } }
                             ]
                         }
                     },
@@ -413,6 +406,7 @@
                 }
             });
             
+            // Customer Chart
             new Chart(document.getElementById('customerChart'), {
                 type: 'bar',
                 plugins: [averageLinePlugin],
@@ -428,7 +422,7 @@
                         datalabels: { display: false },
                         averageLine: {
                              lines: [
-                                { value: averageOverallCustomerHours, color: 'rgba(255, 159, 64, 1)', width: 2, dash: [6,6], label: { content: `전체 고객사 평균 (${averageOverallCustomerHours.toFixed(1)}시간)`, backgroundColor: 'rgba(255, 159, 64, 0.9)', font: {size: 12, weight: 'bold', color: 'white'} } }
+                                { value: averageOverallCustomerHours, color: 'rgba(255, 159, 64, 1)', width: 3, dash: [6,6], label: { content: `전체 고객사 평균 (${averageOverallCustomerHours.toFixed(1)}시간)`, backgroundColor: 'rgba(255, 159, 64, 0.8)', font: {size: 12, weight: 'bold', color: 'white'} } }
                              ]
                         }
                     },
