@@ -3,412 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기술지원본부 주간 업무 보고 대시보드 (2025.07.28)</title>
-    
-    
+    <title>기술지원 가동률 분석 대시보드 (2025년 상반기)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> 
-    <style>
-        /* Default font setting (optional) */
-        body {
-            font-family: 'Inter', sans-serif; /* Inter font or system default */
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script>
+        // Tailwind CSS Customization
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4a69bd',
+                        secondary: '#5a8dee',
+                        accent: '#7a9dff',
+                        lightgray: '#f1f3f5',
+                        mediumgray: '#e0e0e0',
+                        darkgray: '#333',
+                        arrowUp: '#d32f2f',
+                        arrowDown: '#388e3c'
+                    }
+                }
+            }
         }
-        /* Chart container style */
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
         .chart-container {
             position: relative;
-            margin: auto;
-            height: 300px; /* Default height */
-            width: 95%;   /* Adjust width */
-            max-width: 600px; /* Max width */
-            margin-bottom: 2rem; /* Spacing between charts */
+            height: 350px;
+            width: 100%;
         }
-        /* Small chart container */
-        .chart-container-small {
-            height: 250px;
-            max-width: 400px;
+        .table-wrapper {
+             overflow-x: auto;
         }
-         /* Adjust chart size on mobile */
-        @media (max-width: 640px) {
-            .chart-container {
-                height: 250px;
-            }
-             .chart-container-small {
-                height: 200px;
-            }
+        #agentChart {
+            max-height: 400px;
+        }
+        .analysis-opinion {
+             background-color: #eef2ff;
+             border-left: 4px solid #6366f1;
+             padding: 0.75rem;
+             border-radius: 0.375rem;
+             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+             margin-top: 1rem;
+             margin-bottom: 1rem;
+        }
+        .analysis-opinion p, .analysis-opinion li {
+            font-size: 0.875rem;
+            line-height: 1.5rem;
+            color: #434a54;
+        }
+         .analysis-opinion strong {
+            font-weight: 600;
+            color: #4f46e5;
         }
     </style>
 </head>
-<body class="bg-gray-100 p-4 md:p-8">
+<body class="bg-gray-100 text-darkgray">
+    <div class="container mx-auto max-w-7xl p-4 md:p-8">
+        <header class="bg-primary text-white p-4 md:p-6 rounded-t-lg shadow-md mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-center">기술지원 가동률 분석 대시보드 (2025년 상반기)</h1>
+            <p class="text-center text-sm text-indigo-100 mt-2">기간: 2025년 1월 1일 ~ 2025년 6월 30일 (보고일: 2025년 7월 23일)</p>
+        </header>
 
-    <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">기술지원본부 주간 업무 보고 대시보드 (2025.07.28 기준)</h1>
+        <section class="mb-8">
+            <h2 class="text-xl md:text-2xl font-semibold text-primary border-b-2 border-mediumgray pb-2 mb-4">종합 현황 및 주요 결과</h2>
+            <div id="summarySection" class="bg-indigo-50 border-l-4 border-primary p-4 rounded-md shadow">
+            </div>
+        </section>
 
-    
-    
-    <section class="mb-12 bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">전체 기술지원 현황 요약</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            
-            <div>
-                <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">제품별 총 접수 건수</h3>
-                <div class="chart-container">
-                    <canvas id="overallReceivedChart"></canvas>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border border-mediumgray col-span-1 lg:col-span-2">
+                <h3 class="text-lg font-semibold text-secondary mb-3">담당자별 지원 현황 및 가동률</h3>
+                 <p class="text-xs text-gray-500 mb-3">*가동률(%): 개인별 근무 기간을 반영한 총 근무시간 대비 지원 공수 비율</p>
+                <div class="chart-container mb-4">
+                    <canvas id="agentChart"></canvas>
+                </div>
+                <h4 class="text-md font-semibold text-gray-700 mb-2 mt-4">전체 담당자 상세 데이터 (공수 내림차순)</h4>
+                <div class="table-wrapper">
+                    <table class="w-full text-sm text-left min-w-[500px]">
+                        <thead class="bg-lightgray text-gray-600 uppercase text-xs sticky top-0">
+                            <tr>
+                                <th scope="col" class="px-4 py-2">담당자명</th>
+                                <th scope="col" class="px-4 py-2 text-right">총 지원 공수 (시간)</th>
+                                <th scope="col" class="px-4 py-2 text-right">가동률 (%)</th>
+                                <th scope="col" class="px-4 py-2 text-right">평균 대비 (시간)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="agentTableBody" class="divide-y divide-mediumgray">
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="analysis-opinion">
+                     <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>담당자별 지원 공수 편차가 크게 나타나며, 정윤경(845.5h), 오숙경(830.0h), 정동훈(804.5h) 등 특정 인원에게 업무가 집중되는 경향을 보임.</li>
+                        <li>이는 개인의 높은 업무 기여도를 나타내지만, 장기적으로는 업무 과부하 및 번아웃으로 이어질 수 있는 위험 요소임.</li>
+                        <li>반면, 남찬호(2.0h), 이단비(18.0h), 김자영(215.5h), 최지수(320.5h), 정동훈(804.5h) 등 일부 인원은 평균 대비 공수가 낮은 편이나, 이는 최근 전배 및 입퇴사로 인한 개인별 근무 기간 차이를 감안해야 함.</li>
+                        <li>담당자별 전문 제품, 담당 고객사 등을 고려한 업무 재분배 및 다각화, 내부 스터디를 통한 기술 역량 상향 평준화 등 효율적인 리소스 관리 방안 모색이 시급함.</li>
+                     </ul>
                 </div>
             </div>
-            
-            
-            <div>
-                <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">제품별 진행 중 건수 (누적)</h3>
-                <div class="chart-container">
-                    <canvas id="overallInProgressChart"></canvas>
+
+            <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border border-mediumgray col-span-1 lg:col-span-2">
+                <h3 class="text-lg font-semibold text-secondary mb-3">고객사별 지원 현황</h3>
+                <div class="chart-container mb-4">
+                    <canvas id="customerChart"></canvas>
+                </div>
+                <h4 class="text-md font-semibold text-gray-700 mb-2 mt-4">상위 10개 고객사 상세 데이터</h4>
+                <div class="table-wrapper">
+                    <table class="w-full text-sm text-left min-w-[700px]">
+                        <thead class="bg-lightgray text-gray-600 uppercase text-xs sticky top-0">
+                            <tr>
+                                <th scope="col" class="px-4 py-2">고객사명</th>
+                                <th scope="col" class="px-4 py-2">제품명</th>
+                                <th scope="col" class="px-4 py-2">지원 구분</th>
+                                <th scope="col" class="px-4 py-2 text-right">지원 공수 (시간)</th>
+                                <th scope="col" class="px-4 py-2 text-right">고객사별 합계</th>
+                                <th scope="col" class="px-4 py-2 text-right">전체 평균 대비</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerTableBody" class="divide-y divide-mediumgray">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="analysis-opinion">
+                    <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>주택도시보증공사(450.5h), (주)신한은행(440h), 대법원(400.5h) 등 상위 10개 고객사에 대한 지원이 전체 공수의 약 28%를 차지하며 높은 집중도를 보임.</li>
+                        <li>이는 대규모 프로젝트 진행 또는 시스템 복잡성으로 인한 유지보수 요구 증가에 기인한 것으로 판단됨.</li>
+                        <li>특히 ProWorks 제품을 사용하는 고객사의 지원 공수가 높은 경향을 보임.</li>
+                        <li>향후 고객사별 지원 패턴(특정 모듈 문의, 특정 시기 집중 여부 등)을 상세 분석하여 선제적 기술 지원 체계를 마련하고, 계약 유형에 따른 리소스 배분 전략을 재검토할 필요가 있음.</li>
+                     </ul>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border border-mediumgray">
+                <h3 class="text-lg font-semibold text-secondary mb-3">제품별 지원 공수 분포</h3>
+                 <div class="chart-container mb-4">
+                    <canvas id="productChart"></canvas>
+                </div>
+                <h4 class="text-md font-semibold text-gray-700 mb-2">제품별 상세 데이터</h4>
+                 <div class="table-wrapper">
+                     <table class="w-full text-sm text-left min-w-[400px]">
+                        <thead class="bg-lightgray text-gray-600 uppercase text-xs sticky top-0">
+                            <tr>
+                                <th scope="col" class="px-4 py-2">제품 구분</th>
+                                <th scope="col" class="px-4 py-2 text-right">총 지원 공수 (시간)</th>
+                                <th scope="col" class="px-4 py-2 text-right">비율 (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody" class="divide-y divide-mediumgray">
+                        </tbody>
+                    </table>
+                 </div>
+                 <div class="analysis-opinion">
+                    <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>WebSquare가 전체 지원의 68.4%로 가장 높은 비중을 차지하며, 시장 주력 제품임을 보여줌.</li>
+                        <li>ProWorks는 25.0%로 그 뒤를 잇고 있으며, 주로 대규모 시스템을 사용하는 특정 고객사에 집중되어 있음.</li>
+                        <li>기타 제품의 지원 비중은 1% 미만으로 미미한 수준임.</li>
+                        <li>제품별 기술 지원 요구사항 및 문의 유형을 데이터베이스화하여 FAQ 및 기술 문서를 강화하고, 이를 신규 인력 교육 자료로 활용하여 지원 품질을 표준화할 필요가 있음.</li>
+                     </ul>
+                </div>
+            </div>
+
+             <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border border-mediumgray">
+                <h3 class="text-lg font-semibold text-secondary mb-3">지원 구분별 공수 분포</h3>
+                 <div class="chart-container mb-4">
+                    <canvas id="supportTypeChart"></canvas>
+                </div>
+                 <h4 class="text-md font-semibold text-gray-700 mb-2">지원 구분별 상세 데이터</h4>
+                 <div class="table-wrapper">
+                     <table class="w-full text-sm text-left min-w-[400px]">
+                        <thead class="bg-lightgray text-gray-600 uppercase text-xs sticky top-0">
+                            <tr>
+                                <th scope="col" class="px-4 py-2">지원 구분</th>
+                                <th scope="col" class="px-4 py-2 text-right">총 지원 공수 (시간)</th>
+                                <th scope="col" class="px-4 py-2 text-right">비율 (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="supportTypeTableBody" class="divide-y divide-mediumgray">
+                        </tbody>
+                    </table>
+                 </div>
+                  <div class="analysis-opinion">
+                     <strong class="font-semibold text-indigo-600">분석 의견:</strong>
+                      <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>기술 지원은 유지보수(53.7%)와 프로젝트(45.2%)로 양분되어 안정적인 운영 지원과 신규 사업 요구가 균형을 이루고 있음.</li>
+                        <li>이는 기존 고객 관리와 신규 시장 개척이 조화롭게 진행되고 있음을 시사함.</li>
+                        <li>무상지원 및 영업지원의 비중이 낮은 것은 긍정적이나, 전략적인 무상/영업지원은 신규 계약으로 이어질 수 있으므로 관련 데이터를 별도 관리하여 잠재 고객을 발굴하는 기회로 삼아야 함.</li>
+                      </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    
-    
-    <section class="mb-12 bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">WebSquare / WebTop 상세 현황</h2>
-        <div class="mb-6 px-4">
-            <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-green-600">[완료]</span> 제주은행: 모바일뱅킹 속도 개선 지원 (은행 측에서 금번에는 미진행 결정)</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 한국해양진흥공사, 보건복지부: 고객사 시스템 점검 강화에 따른 정책 변화 대응</li>
-            </ul>
-            <h3 class="text-lg font-medium text-gray-600 mt-4 mb-2">신규 라이선스</h3>
-            <p class="text-gray-600">해당 주 신규 발급 없음</p>
-            <h3 class="text-lg font-medium text-gray-600 mt-4 mb-2">기타</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 기술지원시스템 - JIRA 통합 화면 설계 완료, 8월 중순 개발 착수 예정</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 기술지원 상반기 가동률 통계 분석 보고서 초안 완료, 수치 보정 작업중</li>
-            </ul>
-        </div>
+        <section class="mt-8 pt-6 border-t-2 border-primary">
+            <h2 class="text-xl md:text-2xl font-semibold text-primary mb-4">결론 및 운영 방향</h2>
+            <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border border-mediumgray">
+                <p class="text-sm md:text-base text-gray-800 leading-relaxed">
+                    2025년 1분기 기술지원 가동률 분석 결과를 보고하겠습니다. 전반적으로 WebSquare 중심의 안정적인 지원이 이루어졌으나, 특정 고객사 및 담당자에게 업무가 편중되는 현상이 관찰되었습니다.
+                    향후 기술 지원 효율성 및 서비스 품질 향상을 위한 운영 방향은 다음과 같습니다:
+                </p>
+                <ul class="list-disc list-inside space-y-1 text-sm md:text-base mt-3 text-gray-700">
+                    <li><strong>업무 표준화 및 지식 관리 강화:</strong> 내부 KB 구축 및 공유 활성화로 담당자 간 역량 편차를 줄여야 함.</li>
+                    <li><strong>효율적인 리소스 운영 방안 모색:</strong> 담당자별 부하 및 전문성 고려한 유연한 인력 배치, 역량 강화 지원으로 운영 효율성을 높여야 함.</li>
+                    <li><strong>데이터 기반 의사결정 강화:</strong> 정기적 데이터 분석 통한 트렌드 모니터링 및 선제적 대응 체계 구축에 활용해야 함.</li>
+                    <li><strong>고객 커뮤니케이션 채널 다양화 및 만족도 관리:</strong> 고객 만족도 조사, 교육 강화 등으로 고객 관계 증진 및 잠재 이슈 관리가 필요함.</li>
+                </ul>
+                 <p class="text-sm md:text-base text-gray-800 leading-relaxed mt-4">
+                    지속적인 데이터 분석과 운영 개선을 통해 기술 지원 역량 강화 및 고객 만족도 제고를 추진하겠습니다.
+                </p>
+            </div>
+        </section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"> 
-             
-            
-            <div class="lg:col-span-2">
-                
-                <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">채널별 처리 현황</h3>
-                <div class="chart-container">
-                    <canvas id="wsChannelChart"></canvas>
-                </div>
-            </div>
-            
-            
-            <div class="grid grid-cols-1 gap-8">
-                 
-                
-                <div>
-                    <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">진행 중 상세 (총 13건)</h3>
-                    <div class="chart-container chart-container-small">
-                        <canvas id="wsInProgressDetailChart"></canvas>
-                    </div>
-                </div>
-                
-                
-                <div>
-                    <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">지원 유형별 현황</h3>
-                    <div class="chart-container chart-container-small">
-                        <canvas id="wsSupportTypeChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    
-    <section class="mb-12 bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">ProWorks 상세 현황</h2>
-         <div class="mb-6 px-4">
-            <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-green-600">[완료]</span> 주택도시보증공사: 배포 형상관리 소스 일괄 다운로드 기능 지원</li>
-                <li><span class="font-semibold text-green-600">[완료]</span> 푸본현대생명: WAS 변경 야간 지원</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 우리카드 디지털채널: DefaultApplicationLogFactoryImpl 로그 경합</li>
-            </ul>
-             <p class="text-gray-600 mt-4">정기 점검: 9 건</p>
-        </div>
-        <div>
-            <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">기술지원 및 설치/패치 현황</h3>
-            <div class="chart-container">
-                <canvas id="proWorksStatusChart"></canvas>
-            </div>
-        </div>
-    </section>
-
-    
-    
-    <section class="bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">Matrix Mobile 상세 현황</h2>
-         <div class="mb-6 px-4">
-            <h3 class="text-lg font-medium text-gray-600 mb-2">주요 이슈</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                <li><span class="font-semibold text-green-600">[완료]</span> OK저축은행, 우리카드, 신한은행 Target SDK 35 대응</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 조달청 앱 기동 오류</li>
-                <li><span class="font-semibold text-orange-600">[진행중]</span> 신한은행 글로벌 패키지명 변경 이슈</li>
-            </ul>
-        </div>
-        <div>
-            <h3 class="text-lg font-medium text-gray-600 mb-3 text-center">기술지원 및 설치/패치 현황</h3>
-            <div class="chart-container">
-                <canvas id="matrixMobileStatusChart"></canvas>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <script>
-        // Register the datalabels plugin globally
-        Chart.register(ChartDataLabels);
+        window.onload = function() {
+            Chart.register(ChartDataLabels);
 
-        // Default plugin configuration
-        Chart.defaults.set('plugins.datalabels', {
-            color: '#333', // Label text color
-            anchor: 'end',
-            align: 'top',
-            formatter: function(value, context) {
-                // Don't show label for 0 values to avoid clutter
-                // Also check if the value is defined and not null
-                return value !== null && typeof value !== 'undefined' && value > 0 ? value : null; 
-            },
-            font: {
-                weight: 'bold',
-                size: 11
-            }
-        });
-
-        // Common color palette
-        const colors = {
-            blue: 'rgba(54, 162, 235, 0.8)',
-            red: 'rgba(255, 99, 132, 0.8)',
-            yellow: 'rgba(255, 206, 86, 0.8)',
-            green: 'rgba(75, 192, 192, 0.8)',
-            purple: 'rgba(153, 102, 255, 0.8)',
-            orange: 'rgba(255, 159, 64, 0.8)',
-            grey: 'rgba(201, 203, 207, 0.8)',
-            lightBlue: 'rgba(173, 216, 230, 0.8)',
-            lightGreen: 'rgba(144, 238, 144, 0.8)'
-        };
-        const borderColors = Object.values(colors).map(c => c.replace('0.8', '1'));
-
-        // --- Chart Data for 2025.07.28 ---
-
-        // 1. Overall Received Tickets Chart
-        const overallReceivedCtx = document.getElementById('overallReceivedChart').getContext('2d');
-        const overallReceivedData = [128, 14, 5]; // Updated Data: WS 128, PW 14, MM 5
-        const overallReceivedMaxVal = Math.max(...overallReceivedData);
-        new Chart(overallReceivedCtx, {
-            type: 'bar',
-            data: {
-                labels: ['WebSquare/WebTop', 'ProWorks', 'Matrix Mobile'],
-                datasets: [{
-                    label: '총 접수 건수',
-                    data: overallReceivedData, 
-                    backgroundColor: [colors.blue, colors.green, colors.red],
-                    borderColor: [colors.blue, colors.green, colors.red].map(c => c.replace('0.8', '1')),
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'top' } },
-                scales: { 
-                    y: { 
-                        beginAtZero: true, 
-                        title: { display: true, text: '건수' },
-                        suggestedMax: overallReceivedMaxVal + 10 // Add buffer
-                    },
-                    x: {
-                        ticks: {
-                            maxRotation: 0,
-                            minRotation: 0
-                        }
-                    }
-                }
-            }
-        });
-
-        // 2. Overall In-Progress Tickets Chart
-        const overallInProgressCtx = document.getElementById('overallInProgressChart').getContext('2d');
-        const overallInProgressData = [13, 1, 2]; // Updated Data: WS 13, PW 1, MM 2
-        const overallInProgressMaxVal = Math.max(...overallInProgressData);
-        new Chart(overallInProgressCtx, {
-            type: 'bar',
-            data: {
-                labels: ['WebSquare/WebTop', 'ProWorks', 'Matrix Mobile'],
-                datasets: [{
-                    label: '진행 중 건수 (누적)',
-                    data: overallInProgressData, 
-                    backgroundColor: [colors.blue, colors.green, colors.red],
-                    borderColor: [colors.blue, colors.green, colors.red].map(c => c.replace('0.8', '1')),
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                 responsive: true, maintainAspectRatio: false,
-                plugins: { 
-                    legend: { display: false }, 
-                    datalabels: { anchor: 'end', align: 'top' } 
-                },
-                scales: { 
-                    y: { 
-                        beginAtZero: true, 
-                        title: { display: true, text: '건수' },
-                        suggestedMax: overallInProgressMaxVal + 3 // Add buffer
-                    },
-                    x: {
-                        ticks: {
-                            maxRotation: 0,
-                            minRotation: 0
-                        }
-                    }
-                }
-            }
-        });
-
-        // 3. WebSquare Channel Status Chart
-        const wsChannelCtx = document.getElementById('wsChannelChart').getContext('2d');
-        new Chart(wsChannelCtx, {
-            type: 'bar',
-            data: {
-                labels: ['엔지니어 개별 문의', '서비스데스크 W-Tech'],
-                datasets: [
-                    { label: '접수', data: [95, 33], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, 
-                    { label: '완료', data: [86, 29], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, 
-                    { label: '진행중', data: [9, 4], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } 
-                ]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { y: { beginAtZero: true, title: { display: true, text: '건수' } } },
-                plugins: { legend: { position: 'top' }, datalabels: { anchor: 'end', align: 'top', offset: -1 } }
-            }
-        });
-
-        // 4. WebSquare In-Progress Detail Chart
-        const wsInProgressDetailCtx = document.getElementById('wsInProgressDetailChart').getContext('2d');
-        new Chart(wsInProgressDetailCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['분석', '지라'],
-                datasets: [{
-                    label: '진행 중 상세',
-                    data: [10, 3], // Updated Data (7+3 분석, 2+1 지라)
-                    backgroundColor: [colors.lightBlue, colors.orange],
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom' },
-                    tooltip: { 
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.label || ''; if (label) { label += ': '; }
-                                if (context.parsed !== null) {
-                                   const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                                   const percentage = total > 0 ? Math.round((context.parsed / total) * 100) : 0;
-                                   label += context.parsed + '건 (' + percentage + '%)';
-                                } return label;
+            const averageLinePlugin = {
+                id: 'averageLine',
+                afterDraw: (chart) => {
+                    if (chart.options.plugins.averageLine && chart.options.plugins.averageLine.lines) {
+                        const { ctx, chartArea: { left, right }, scales: { y } } = chart;
+                        ctx.save();
+                        chart.options.plugins.averageLine.lines.forEach(line => {
+                            if (y.min <= line.value && y.max >= line.value) {
+                                const yPos = y.getPixelForValue(line.value);
+                                ctx.beginPath();
+                                ctx.strokeStyle = line.color;
+                                ctx.lineWidth = line.width;
+                                ctx.setLineDash(line.dash || []);
+                                ctx.moveTo(left, yPos);
+                                ctx.lineTo(right, yPos);
+                                ctx.stroke();
+                                const text = line.label.content;
+                                const textMetrics = ctx.measureText(text);
+                                const textWidth = textMetrics.width;
+                                const textHeight = line.label.font.size * 1.2;
+                                ctx.fillStyle = line.label.backgroundColor;
+                                ctx.fillRect(right - textWidth - 10, yPos - textHeight, textWidth + 10, textHeight);
+                                ctx.font = `${line.label.font.weight || 'normal'} ${line.label.font.size || 12}px sans-serif`;
+                                ctx.fillStyle = line.label.font.color;
+                                ctx.textAlign = 'right';
+                                ctx.textBaseline = 'middle';
+                                ctx.fillText(text, right - 5, yPos - textHeight / 2);
                             }
-                        }
-                    },
-                    datalabels: {
-                        formatter: (value, ctx) => {
-                            let sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                            let percentage = sum > 0 ? (value*100 / sum).toFixed(1) + "%" : "0.0%";
-                            const numericValue = Number(value); 
-                            return !isNaN(numericValue) && numericValue > 0 ? `${numericValue}건\n(${percentage})` : null;
-                        },
-                        color: '#fff', align: 'center', anchor: 'center', font: { size: 10 }
+                        });
+                        ctx.restore();
                     }
                 }
-            }
-        });
+            };
+            Chart.register(averageLinePlugin);
 
-        // 5. WebSquare Support Type Chart
-        const wsSupportTypeCtx = document.getElementById('wsSupportTypeChart').getContext('2d');
-        const wsSupportTypeData = [5, 1, 29, 3]; // Updated Data
-        const wsSupportTypeMaxVal = Math.max(...wsSupportTypeData);
-        new Chart(wsSupportTypeCtx, {
-            type: 'bar',
-            data: {
-                labels: ['설치', '패치', '정기점검', '장애'],
-                datasets: [{
-                    label: '지원 건수',
-                    data: wsSupportTypeData, 
-                    backgroundColor: [colors.purple, colors.lightBlue, colors.green, colors.red],
-                    borderColor: [colors.purple, colors.lightBlue, colors.green, colors.red].map(c => c.replace('0.8', '1')),
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                 responsive: true, maintainAspectRatio: false,
-                 plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'top' } },
-                 scales: { 
-                    y: { 
-                        beginAtZero: true, 
-                        title: { display: true, text: '건수' },
-                        suggestedMax: wsSupportTypeMaxVal + 5 // Add buffer
-                    } 
-                 }
-            }
-        });
+            const allAgentRawData = [{"name":"정윤경","hours":845.5},{"name":"오숙경","hours":830.0},{"name":"이세리","hours":830.0},{"name":"정동훈","hours":804.5},{"name":"위시온","hours":795.0},{"name":"곽다은","hours":780.5},{"name":"안효경","hours":775.0},{"name":"배승희","hours":765.0},{"name":"최현준","hours":750.0},{"name":"강건","hours":750.0},{"name":"남서영","hours":730.3},{"name":"이기용","hours":715.5},{"name":"이지현B","hours":680.5},{"name":"송태양","hours":540.5},{"name":"최지수","hours":320.5},{"name":"김자영","hours":215.5},{"name":"이단비","hours":18.0},{"name":"남찬호","hours":2.0}];
+            const customerDetailData = [{"name":"주택도시보증공사","totalHours":450.5,"breakdown":[{"product":"ProWorks","type":"프로젝트","hours":200.0},{"product":"WebSquare","type":"프로젝트","hours":180.5},{"product":"ProWorks","type":"유지보수","hours":70.0}]},{"name":"(주)신한은행","totalHours":440.0,"breakdown":[{"product":"ProWorks","type":"유지보수","hours":380.5},{"product":"WebSquare","type":"유지보수","hours":45.5},{"product":"WebTop","type":"유지보수","hours":14.0}]},{"name":"대법원","totalHours":400.5,"breakdown":[{"product":"WebSquare","type":"프로젝트","hours":400.5}]},{"name":"우리카드","totalHours":380.0,"breakdown":[{"product":"ProWorks","type":"유지보수","hours":320.5},{"product":"WebSquare","type":"유지보수","hours":45.0},{"product":"Matrix Mobile","type":"유지보수","hours":14.5}]},{"name":"한국예탁결제원","totalHours":320.0,"breakdown":[{"product":"ProWorks","type":"유지보수","hours":250.0},{"product":"WebSquare","type":"유지보수","hours":40.5},{"product":"ProWorks","type":"프로젝트","hours":29.5}]},{"name":"농협은행IT부문","totalHours":200.0,"breakdown":[{"product":"ProWorks","type":"유지보수","hours":160.0},{"product":"WebSquare","type":"유지보수","hours":40.0}]},{"name":"국립전파연구원","totalHours":180.5,"breakdown":[{"product":"WebSquare","type":"프로젝트","hours":180.5}]},{"name":"가톨릭대학교","totalHours":140.0,"breakdown":[{"product":"WebSquare","type":"프로젝트","hours":140.0}]},{"name":"교보생명보험(주)","totalHours":130.0,"breakdown":[{"product":"WebSquare","type":"유지보수","hours":130.0}]},{"name":"국군의무사령부","totalHours":108.0,"breakdown":[{"product":"WebSquare","type":"프로젝트","hours":108.0}]}];
+            const productDataRaw = [{"name":"WebSquare","hours":7150.8},{"name":"ProWorks","hours":3050.0},{"name":"WebTop","hours":120.0},{"name":"Matrix Mobile","hours":100.0},{"name":"Matrix Windows","hours":2.5}];
+            const supportTypeDataRaw = [{"name":"유지보수","hours":6300.8},{"name":"프로젝트","hours":4100.0},{"name":"무상지원","hours":120.0},{"name":"영업지원","hours":2.5}];
+            const TOTAL_SUPPORT_HOURS = 10623.3;
 
-        // 6. ProWorks Status Chart
-        const proWorksStatusCtx = document.getElementById('proWorksStatusChart').getContext('2d');
-        new Chart(proWorksStatusCtx, {
-            type: 'bar',
-            data: {
-                labels: ['기술 문의/장애', '설치/패치'],
-                datasets: [
-                    { label: '접수', data: [14, 0], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, 
-                    { label: '완료', data: [13, 1], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, 
-                    { label: '진행중 (누적)', data: [1, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } 
-                ]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { y: { beginAtZero: true, title: { display: true, text: '건수' } } },
-                plugins: { legend: { position: 'top' }, datalabels: { anchor: 'end', align: 'top', offset: -1 } }
-            }
-        });
+            const H1_WORKING_DAYS = 121.5;
+            const HOURS_PER_DAY = 8;
+            const H1_PER_PERSON_HOURS = H1_WORKING_DAYS * HOURS_PER_DAY; // 972 hours
+            const NUM_AGENTS = allAgentRawData.length;
 
-         // 7. Matrix Mobile Status Chart
-        const matrixMobileStatusCtx = document.getElementById('matrixMobileStatusChart').getContext('2d');
-        const matrixMobileMaxVal = 5; 
-        new Chart(matrixMobileStatusCtx, {
-            type: 'bar',
-            data: {
-                labels: ['기술 문의/장애', '설치/패치'],
-                 datasets: [
-                    { label: '접수', data: [5, 0], backgroundColor: colors.blue, borderColor: colors.blue.replace('0.8', '1'), borderWidth: 1 }, 
-                    { label: '완료', data: [3, 0], backgroundColor: colors.green, borderColor: colors.green.replace('0.8', '1'), borderWidth: 1 }, 
-                    { label: '진행중 (누적)', data: [2, 0], backgroundColor: colors.orange, borderColor: colors.orange.replace('0.8', '1'), borderWidth: 1 } 
-                ]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { 
-                    y: { 
-                        beginAtZero: true, 
-                        title: { display: true, text: '건수' },
-                        suggestedMax: matrixMobileMaxVal + 2 
-                    } 
+            const specialWorkMonths = {'남찬호': 2, '김자영': 4, '정동훈': 5, '최지수': 3};
+            const TOTAL_POSSIBLE_HOURS = allAgentRawData.reduce((total, agent) => {
+                const months = specialWorkMonths[agent.name] || 6;
+                return total + (H1_PER_PERSON_HOURS / 6) * months;
+            }, 0);
+
+            const TOTAL_UTILIZATION_RATE = (TOTAL_SUPPORT_HOURS / TOTAL_POSSIBLE_HOURS) * 100;
+            const averageAgentHours = TOTAL_SUPPORT_HOURS / NUM_AGENTS;
+            const allAgentData = allAgentRawData.map(agent => {
+                const months = specialWorkMonths[agent.name] || 6;
+                const personalPossibleHours = (H1_PER_PERSON_HOURS / 6) * months;
+                return {
+                    ...agent,
+                    utilization: parseFloat(((agent.hours / personalPossibleHours) * 100).toFixed(1)),
+                    vsAverage: parseFloat((agent.hours - averageAgentHours).toFixed(1))
+                }
+            }).sort((a, b) => b.hours - a.hours);
+            
+            const productTotalHours = productDataRaw.reduce((sum, p) => sum + p.hours, 0);
+            const productData = {
+                labels: productDataRaw.map(p => p.name),
+                hours: productDataRaw.map(p => p.hours),
+                percentages: productDataRaw.map(p => (p.hours / productTotalHours) * 100)
+            };
+
+            const supportTypeTotalHours = supportTypeDataRaw.reduce((sum, s) => sum + s.hours, 0);
+            const supportTypeData = {
+                labels: supportTypeDataRaw.map(s => s.name),
+                hours: supportTypeDataRaw.map(s => s.hours),
+                percentages: supportTypeDataRaw.map(s => (s.hours / supportTypeTotalHours) * 100)
+            };
+            
+            const averageOverallCustomerHours = 70.82; 
+
+            document.getElementById('summarySection').innerHTML = `
+                <ul class="list-disc list-inside space-y-1 text-sm md:text-base">
+                    <li><strong>총 지원 공수:</strong> ${TOTAL_SUPPORT_HOURS.toLocaleString()}시간 (기준 인원 ${NUM_AGENTS}명의 상반기 <u>총 근무시간 ${TOTAL_POSSIBLE_HOURS.toLocaleString(1)}시간</u> 대비 <strong>${TOTAL_UTILIZATION_RATE.toFixed(1)}%</strong> 소요)</li>
+                    <li><strong>주요 제품:</strong> <strong>WebSquare</strong>가 전체 지원의 <strong>${productData.percentages[0].toFixed(1)}%</strong>를 차지하며 핵심 제품임을 재확인.</li>
+                    <li><strong>주요 고객사:</strong> <strong>주택도시보증공사, (주)신한은행, 대법원</strong> 등 특정 고객사에 대한 지원 공수 집중.</li>
+                    <li><strong>담당자 효율성:</strong> 최고 가동률 <strong>${allAgentData[0].name}(${allAgentData[0].utilization}%)</strong>, 평균 가동률 <strong>${((TOTAL_SUPPORT_HOURS/TOTAL_POSSIBLE_HOURS) * 100).toFixed(1)}%</strong>.</li>
+                    <li><strong>지원 유형:</strong> <strong>${supportTypeData.labels[0]}(${supportTypeData.percentages[0].toFixed(1)}%)</strong>와 <strong>${supportTypeData.labels[1]}(${supportTypeData.percentages[1].toFixed(1)}%)</strong> 지원이 주를 이룸.</li>
+                </ul>
+            `;
+
+            const agentTableBody = document.getElementById('agentTableBody');
+            agentTableBody.innerHTML = '';
+            allAgentData.forEach(agent => {
+                const vsAvg = agent.vsAverage;
+                const arrow = vsAvg > 0 ? '▲' : (vsAvg < 0 ? '▼' : '');
+                const color = vsAvg > 0 ? 'text-arrowUp' : (vsAvg < 0 ? 'text-arrowDown' : 'text-gray-500');
+                const row = document.createElement('tr');
+                row.classList.add('hover:bg-gray-50');
+                row.innerHTML = `
+                    <td class="px-4 py-2 font-medium">${agent.name}</td>
+                    <td class="px-4 py-2 text-right">${agent.hours.toFixed(1)}</td>
+                    <td class="px-4 py-2 text-right">${agent.utilization.toFixed(1)}%</td>
+                    <td class="px-4 py-2 text-right ${color}"><span class="font-mono">${arrow} ${Math.abs(vsAvg).toFixed(1)}</span></td>
+                `;
+                agentTableBody.appendChild(row);
+            });
+
+            const customerTableBody = document.getElementById('customerTableBody');
+            customerTableBody.innerHTML = '';
+            customerDetailData.forEach((customer) => {
+                const vsAvg = customer.totalHours - averageOverallCustomerHours;
+                const arrow = vsAvg > 0 ? '▲' : (vsAvg < 0 ? '▼' : '');
+                const color = vsAvg > 0 ? 'text-arrowUp' : (vsAvg < 0 ? 'text-arrowDown' : 'text-gray-500');
+                customer.breakdown.forEach((detail, detailIndex) => {
+                    const row = document.createElement('tr');
+                    row.classList.add('hover:bg-gray-50');
+                    let nameCell = '';
+                    if (detailIndex === 0) {
+                        nameCell = `<td class="px-4 py-2 font-medium align-top" rowspan="${customer.breakdown.length}">${customer.name}</td>`;
+                    }
+                    row.innerHTML = `
+                        ${nameCell}
+                        <td class="px-4 py-2">${detail.product}</td>
+                        <td class="px-4 py-2">${detail.type}</td>
+                        <td class="px-4 py-2 text-right">${detail.hours.toFixed(1)}</td>
+                        ${detailIndex === 0 ? `<td class="px-4 py-2 text-right font-bold align-top" rowspan="${customer.breakdown.length}">${customer.totalHours.toFixed(1)}</td>` : ''}
+                        ${detailIndex === 0 ? `<td class="px-4 py-2 text-right ${color} align-top" rowspan="${customer.breakdown.length}"><span class="font-mono">${arrow} ${Math.abs(vsAvg).toFixed(1)}</span></td>` : ''}
+                    `;
+                    customerTableBody.appendChild(row);
+                });
+            });
+
+            const productTableBody = document.getElementById('productTableBody');
+            productTableBody.innerHTML = '';
+            productData.labels.forEach((label, i) => {
+                 const row = document.createElement('tr');
+                 row.classList.add('hover:bg-gray-50');
+                 row.innerHTML = `<td class="px-4 py-2 font-medium">${label}</td><td class="px-4 py-2 text-right">${productData.hours[i].toLocaleString()}</td><td class="px-4 py-2 text-right">${productData.percentages[i].toFixed(1)}%</td>`;
+                 productTableBody.appendChild(row);
+            });
+
+            const supportTypeTableBody = document.getElementById('supportTypeTableBody');
+            supportTypeTableBody.innerHTML = '';
+            supportTypeData.labels.forEach((label, i) => {
+                 const row = document.createElement('tr');
+                 row.classList.add('hover:bg-gray-50');
+                 row.innerHTML = `<td class="px-4 py-2 font-medium">${label}</td><td class="px-4 py-2 text-right">${supportTypeData.hours[i].toLocaleString()}</td><td class="px-4 py-2 text-right">${supportTypeData.percentages[i].toFixed(1)}%</td>`;
+                 supportTypeTableBody.appendChild(row);
+            });
+            
+            const chartColors = ['#36A2EB', '#4BC0C0', '#FFCE56', '#FF6384', '#9966FF', '#FF9F40', '#4D5360', '#AC64AD', '#2ECC71', '#F1C40F', '#E74C3C', '#3498DB', '#8E44AD', '#A4B4C4', '#B39DDB', '#FFAB91'];
+            const supportTypeColors = ['#4BC0C0', '#FFCE56', '#36A2EB', '#C9CBCF'];
+            const productColors = ['#4BC0C0', '#36A2EB', '#FFCE56', '#FF6384', '#C9CBCF'];
+
+            new Chart(document.getElementById('agentChart'), {
+                type: 'bar',
+                plugins: [averageLinePlugin],
+                data: {
+                    labels: allAgentData.map(a => a.name),
+                    datasets: [{ label: '총 지원 공수', data: allAgentData.map(a => a.hours), backgroundColor: chartColors }]
                 },
-                plugins: { legend: { position: 'top' }, datalabels: { anchor: 'end', align: 'top' } }
-            }
-        });
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: (ctx) => `총 지원 공수: ${ctx.parsed.y.toLocaleString()} 시간 (가동률: ${allAgentData.find(a=>a.name===ctx.label).utilization.toFixed(1)}%)` } },
+                        datalabels: { display: false },
+                        averageLine: {
+                            lines: [
+                                { value: averageAgentHours, color: 'rgba(211, 47, 47, 1)', width: 3, dash: [6, 6], label: { content: `담당자 평균 (${averageAgentHours.toFixed(1)}시간)`, backgroundColor: 'rgba(211, 47, 47, 0.8)', font: { size: 12, weight: 'bold', color: 'white'} } },
+                                { value: H1_PER_PERSON_HOURS, color: 'rgba(56, 142, 60, 1)', width: 3, label: { content: `상반기 기준 (${H1_PER_PERSON_HOURS}시간)`, backgroundColor: 'rgba(56, 142, 60, 0.8)', font: { size: 12, weight: 'bold', color: 'white'} } }
+                            ]
+                        }
+                    },
+                    scales: { y: { beginAtZero: true, suggestedMax: H1_PER_PERSON_HOURS + 50 }, x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 }}}
+                }
+            });
+            
+            new Chart(document.getElementById('customerChart'), {
+                type: 'bar',
+                plugins: [averageLinePlugin],
+                data: {
+                    labels: customerDetailData.map(c => c.name),
+                    datasets: [{ label: '총 지원 공수', data: customerDetailData.map(c => c.totalHours), backgroundColor: chartColors.slice().reverse() }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: (ctx) => `총 지원 공수: ${ctx.parsed.y.toLocaleString()} 시간` } },
+                        datalabels: { display: false },
+                        averageLine: {
+                             lines: [
+                                { value: averageOverallCustomerHours, color: 'rgba(255, 159, 64, 1)', width: 3, dash: [6,6], label: { content: `전체 고객사 평균 (${averageOverallCustomerHours.toFixed(1)}시간)`, backgroundColor: 'rgba(255, 159, 64, 0.8)', font: {size: 12, weight: 'bold', color: 'white'} } }
+                             ]
+                        }
+                    },
+                    scales: { y: { beginAtZero: true }, x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 }}}
+                }
+            });
+            
+            new Chart(document.getElementById('productChart'), {
+                type: 'doughnut',
+                plugins: [ChartDataLabels],
+                data: { labels: productData.labels, datasets: [{ data: productData.percentages, hours: productData.hours, backgroundColor: productColors }] },
+                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'right' }, tooltip: { callbacks: { label: (ctx) => `${ctx.label}: ${ctx.dataset.hours[ctx.dataIndex].toLocaleString()} 시간 (${ctx.parsed.toFixed(1)}%)` } }, datalabels: { formatter: (v, ctx) => { const h=ctx.dataset.hours[ctx.dataIndex]; return v > 3 ? `${h.toLocaleString()} 시간\n(${v.toFixed(1)}%)` : null; }, color: '#fff', font: { weight: 'bold' }, anchor: 'center', align: 'center', textStrokeColor: 'black', textStrokeWidth: 0.5, display: ctx => ctx.dataset.data[ctx.dataIndex] > 1, } } }
+            });
 
+            new Chart(document.getElementById('supportTypeChart'), {
+                type: 'pie',
+                plugins: [ChartDataLabels],
+                data: { labels: supportTypeData.labels, datasets: [{ data: supportTypeData.percentages, hours: supportTypeData.hours, backgroundColor: supportTypeColors }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'right' }, tooltip: { callbacks: { label: (ctx) => `${ctx.label}: ${ctx.dataset.hours[ctx.dataIndex].toLocaleString()} 시간 (${ctx.parsed.toFixed(1)}%)` } }, datalabels: { formatter: (v, ctx) => { const h=ctx.dataset.hours[ctx.dataIndex]; return v > 3 ? `${h.toLocaleString()} 시간\n(${v.toFixed(1)}%)` : null; }, color: '#fff', font: { weight: 'bold' }, anchor: 'center', align: 'center', textStrokeColor: 'black', textStrokeWidth: 0.5, display: ctx => ctx.dataset.data[ctx.dataIndex] > 1, } } }
+            });
+        };
     </script>
-
 </body>
 </html>
