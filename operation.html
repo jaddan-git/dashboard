@@ -436,7 +436,7 @@
                     const ticksCount = ticks.length;
                     if (ticksCount === 0) return;
 
-                    let maxLabelWidth = 0;
+                    let totalLabelWidth = 0;
                     const ctx = chart.ctx;
                     const tickFont = chart.options.scales.x.ticks.font || {};
                     const fontSize = tickFont.size || 12;
@@ -444,15 +444,10 @@
                     ctx.font = `${fontSize}px ${fontFamily}`;
                     
                     ticks.forEach(tick => {
-                        const labelWidth = ctx.measureText(tick.label).width;
-                        if (labelWidth > maxLabelWidth) {
-                            maxLabelWidth = labelWidth;
-                        }
+                        totalLabelWidth += ctx.measureText(tick.label).width + 15; // 라벨 너비 + 여백
                     });
 
-                    const requiredWidthForHorizontal = (maxLabelWidth + 15) * ticksCount;
-
-                    if (requiredWidthForHorizontal > availableWidth) {
+                    if (totalLabelWidth > availableWidth) {
                         chart.options.scales.x.ticks.maxRotation = 45;
                         chart.options.scales.x.ticks.minRotation = 45;
                     } else {
