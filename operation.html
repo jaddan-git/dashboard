@@ -482,6 +482,11 @@
                 data: { labels: supportTypeData.labels, datasets: [{ data: supportTypeData.percentages, hours: supportTypeData.hours, backgroundColor: supportTypeColors }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'right' }, tooltip: { callbacks: { label: (ctx) => `${ctx.label}: ${ctx.dataset.hours[ctx.dataIndex].toLocaleString()} 시간 (${ctx.parsed.toFixed(1)}%)` } }, datalabels: { formatter: (v, ctx) => { const h=ctx.dataset.hours[ctx.dataIndex]; return v > 3 ? `${h.toLocaleString()} 시간\n(${v.toFixed(1)}%)` : null; }, color: '#fff', font: { weight: 'bold' }, anchor: 'center', align: 'center', textStrokeColor: 'black', textStrokeWidth: 0.5, display: ctx => ctx.dataset.data[ctx.dataIndex] > 1, } } }
             });
+
+            // Force a resize event after a short delay to ensure correct initial rendering
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 1000);
         };
     </script>
 </body>
