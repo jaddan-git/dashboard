@@ -377,7 +377,7 @@
             const supportTypeColors = ['#4BC0C0', '#FFCE56', '#36A2EB', '#C9CBCF'];
             const productColors = ['#4BC0C0', '#36A2EB', '#FFCE56', '#FF6384', '#C9CBCF'];
 
-            new Chart(document.getElementById('agentChart'), {
+            const agentChart = new Chart(document.getElementById('agentChart'), {
                 type: 'bar',
                 plugins: [averageLinePlugin],
                 data: {
@@ -397,11 +397,11 @@
                             ]
                         }
                     },
-                    scales: { y: { beginAtZero: true, suggestedMax: H1_PER_PERSON_HOURS + 50 }, x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 }}}
+                    scales: { y: { beginAtZero: true, suggestedMax: H1_PER_PERSON_HOURS + 50 }, x: { ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }}}
                 }
             });
             
-            new Chart(document.getElementById('customerChart'), {
+            const customerChart = new Chart(document.getElementById('customerChart'), {
                 type: 'bar',
                 plugins: [averageLinePlugin],
                 data: {
@@ -420,9 +420,75 @@
                              ]
                         }
                     },
-                    scales: { y: { beginAtZero: true }, x: { ticks: { autoSkip: false, maxRotation: 90, minRotation: 45 }}}
+                    scales: { y: { beginAtZero: true }, x: { ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }}}
                 }
             });
+
+            function setupDynamicTickRotation(chartInstance) {
+                const adjustRotation = () => {
+                    const chart = chartInstance;
+                    const ctx = chart.ctx;
+                    const ticks = chart.scales.x.getTicks();
+                    if (!ticks || ticks.length === 0) return;
+
+                    const tickFont = Chart.helpers ? Chart.helpers.toFont(chart.options.scales.x.ticks.font) : '12px sans-serif';
+                    ctx.font = tickFont.string || tickFont;
+                    
+                    let requiredWidth = 0;
+                    for (const tick of ticks) {
+                        requiredWidth += ctx.measureText(tick.label).width + 20; // 20px padding
+                    }
+
+                    const availableWidth = chart.chartArea.width;
+
+                    if (requiredWidth > availableWidth) {
+                        chart.options.scales.x.ticks.maxRotation = 45;
+                        chart.options.scales.x.ticks.minRotation = 45;
+                    } else {
+                        chart.options.scales.x.ticks.maxRotation = 0;
+                        chart.options.scales.x.ticks.minRotation = 0;
+                    }
+                    chart.update('none');
+                };
+
+                adjustRotation();
+
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(adjustRotation, 150);
+                });
+            }
+            
+            // Chart.js v4 does not have Chart.helpers, so we need a simplified approach
+            function setupSimpleDynamicTickRotation(chartInstance) {
+                const adjustRotation = () => {
+                    const chart = chartInstance;
+                    const availableWidth = chart.chartArea.width;
+                    const ticksCount = chart.scales.x.getTicks().length;
+                    const averageLabelWidth = 80; // Heuristic average width for labels
+                    
+                    if ((averageLabelWidth * ticksCount) > availableWidth) {
+                        chart.options.scales.x.ticks.maxRotation = 45;
+                        chart.options.scales.x.ticks.minRotation = 45;
+                    } else {
+                        chart.options.scales.x.ticks.maxRotation = 0;
+                        chart.options.scales.x.ticks.minRotation = 0;
+                    }
+                    chart.update('none');
+                };
+                
+                adjustRotation();
+
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(adjustRotation, 150);
+                });
+            }
+
+            setupSimpleDynamicTickRotation(agentChart);
+            setupSimpleDynamicTickRotation(customerChart);
             
             new Chart(document.getElementById('productChart'), {
                 type: 'doughnut',
