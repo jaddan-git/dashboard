@@ -272,7 +272,7 @@
             const H1_PER_PERSON_HOURS = H1_WORKING_DAYS * HOURS_PER_DAY; // 972 hours
             const NUM_AGENTS = allAgentRawData.length;
 
-            const specialWorkMonths = {'남찬호': 2, '김자영': 4, '정동훈': 5, '최지수': 3};
+            const specialWorkMonths = {'남찬호': 2, '김자영': 4, '최지수': 3, '이단비': 2};
             const TOTAL_POSSIBLE_HOURS = allAgentRawData.reduce((total, agent) => {
                 const months = specialWorkMonths[agent.name] || 6;
                 return total + (H1_PER_PERSON_HOURS / 6) * months;
