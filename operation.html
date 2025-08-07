@@ -420,55 +420,39 @@
                              ]
                         }
                     },
-                    scales: { y: { beginAtZero: true }, x: { ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }}}
+                    scales: { y: { beginAtZero: true, min: 0 }, x: { ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }}}
                 }
             });
 
             function setupDynamicTickRotation(chartInstance) {
                 const adjustRotation = () => {
                     const chart = chartInstance;
-                    const ctx = chart.ctx;
+                    if (!chart.ctx || !chart.chartArea || !chart.scales.x.getTicks) {
+                        setTimeout(() => adjustRotation(chart), 50);
+                        return;
+                    }
+                    const availableWidth = chart.chartArea.width;
                     const ticks = chart.scales.x.getTicks();
-                    if (!ticks || ticks.length === 0) return;
+                    const ticksCount = ticks.length;
+                    if (ticksCount === 0) return;
 
-                    const tickFont = Chart.helpers ? Chart.helpers.toFont(chart.options.scales.x.ticks.font) : '12px sans-serif';
-                    ctx.font = tickFont.string || tickFont;
+                    let maxLabelWidth = 0;
+                    const ctx = chart.ctx;
+                    const tickFont = chart.options.scales.x.ticks.font || {};
+                    const fontSize = tickFont.size || 12;
+                    const fontFamily = tickFont.family || 'sans-serif';
+                    ctx.font = `${fontSize}px ${fontFamily}`;
                     
-                    let requiredWidth = 0;
-                    for (const tick of ticks) {
-                        requiredWidth += ctx.measureText(tick.label).width + 20; // 20px padding
-                    }
+                    ticks.forEach(tick => {
+                        const labelWidth = ctx.measureText(tick.label).width;
+                        if (labelWidth > maxLabelWidth) {
+                            maxLabelWidth = labelWidth;
+                        }
+                    });
 
-                    const availableWidth = chart.chartArea.width;
+                    const requiredWidthForHorizontal = (maxLabelWidth + 15) * ticksCount;
 
-                    if (requiredWidth > availableWidth) {
-                        chart.options.scales.x.ticks.maxRotation = 45;
-                        chart.options.scales.x.ticks.minRotation = 45;
-                    } else {
-                        chart.options.scales.x.ticks.maxRotation = 0;
-                        chart.options.scales.x.ticks.minRotation = 0;
-                    }
-                    chart.update('none');
-                };
-
-                adjustRotation();
-
-                let resizeTimer;
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(adjustRotation, 150);
-                });
-            }
-            
-            // Chart.js v4 does not have Chart.helpers, so we need a simplified approach
-            function setupSimpleDynamicTickRotation(chartInstance) {
-                const adjustRotation = () => {
-                    const chart = chartInstance;
-                    const availableWidth = chart.chartArea.width;
-                    const ticksCount = chart.scales.x.getTicks().length;
-                    const averageLabelWidth = 80; // Heuristic average width for labels
-                    
-                    if ((averageLabelWidth * ticksCount) > availableWidth) {
+                    if (requiredWidthForHorizontal > availableWidth) {
                         chart.options.scales.x.ticks.maxRotation = 45;
                         chart.options.scales.x.ticks.minRotation = 45;
                     } else {
@@ -478,17 +462,17 @@
                     chart.update('none');
                 };
                 
-                adjustRotation();
+                setTimeout(() => adjustRotation(chartInstance), 100);
 
                 let resizeTimer;
                 window.addEventListener('resize', () => {
                     clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(adjustRotation, 150);
+                    resizeTimer = setTimeout(() => adjustRotation(chartInstance), 150);
                 });
             }
 
-            setupSimpleDynamicTickRotation(agentChart);
-            setupSimpleDynamicTickRotation(customerChart);
+            setupDynamicTickRotation(agentChart);
+            setupDynamicTickRotation(customerChart);
             
             new Chart(document.getElementById('productChart'), {
                 type: 'doughnut',
