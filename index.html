@@ -23,14 +23,15 @@
             position: relative;
             margin: auto;
             height: 300px; /* 기본 높이 */
-            width: 95%;   /* 너비 조정 */
-            max-width: 600px; /* 최대 너비 */
-            margin-bottom: 2rem; /* 차트 간 간격 */
+            width: 100%;   /* 너비 100%로 변경하여 그리드에 맞춤 */
+            max-width: 100%; 
+            margin-bottom: 1rem;
         }
         /* 작은 차트 컨테이너 */
         .chart-container-small {
             height: 250px;
-            max-width: 400px;
+            width: 100%;
+            max-width: 100%;
         }
          /* 모바일 환경에서 차트 크기 조정 */
         @media (max-width: 640px) {
@@ -124,28 +125,41 @@
              </div>
         </div>
 
-        <!-- 차트 영역 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start border-t border-gray-100 pt-8"> 
-            <div class="lg:col-span-2">
+        <!-- 차트 영역: 반응형 그리드 적용 -->
+        <!-- 
+            md:grid-cols-2 -> 중간 화면에서 2열
+            xl:grid-cols-3 -> 큰 화면에서 3열 (한 줄 배치)
+        -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-start border-t border-gray-100 pt-8"> 
+            
+            <!-- 1. 채널별 처리 현황 -->
+            <div class="w-full">
                 <h3 class="text-sm font-medium text-gray-500 mb-3 text-center uppercase">채널별 처리 현황</h3>
                 <div class="chart-container">
                     <canvas id="wsChannelChart"></canvas>
                 </div>
             </div>
-            <div class="grid grid-cols-1 gap-8">
-                <div>
-                    <h3 class="text-sm font-medium text-gray-500 mb-3 text-center uppercase">진행 중 상세</h3>
-                    <div class="chart-container chart-container-small">
-                        <canvas id="wsInProgressDetailChart"></canvas>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-medium text-gray-500 mb-3 text-center uppercase">지원 유형별 현황</h3>
-                    <div class="chart-container chart-container-small">
-                        <canvas id="wsSupportTypeChart"></canvas>
-                    </div>
+            
+            <!-- 2. 진행 중 상세 -->
+            <div class="w-full">
+                <h3 class="text-sm font-medium text-gray-500 mb-3 text-center uppercase">진행 중 상세</h3>
+                <div class="chart-container chart-container-small">
+                    <canvas id="wsInProgressDetailChart"></canvas>
                 </div>
             </div>
+
+            <!-- 3. 지원 유형별 현황 -->
+            <!-- 
+                md:col-start-2 -> 중간 화면(2열)일 때 2번째 열(우측)에 배치
+                xl:col-start-auto -> 큰 화면(3열)일 때는 자동 배치(3번째 열)
+            -->
+            <div class="w-full md:col-start-2 xl:col-start-auto">
+                <h3 class="text-sm font-medium text-gray-500 mb-3 text-center uppercase">지원 유형별 현황</h3>
+                <div class="chart-container chart-container-small">
+                    <canvas id="wsSupportTypeChart"></canvas>
+                </div>
+            </div>
+
         </div>
     </section>
 
