@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기술지원본부 주간 업무 보고 대시보드 (2025.12.08)</title>
+    <title>기술지원본부 주간 업무 보고 대시보드 (2025.12.15)</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -46,7 +46,7 @@
 </head>
 <body class="bg-gray-50 p-4 md:p-8">
 
-    <h1 class="text-3xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">기술지원본부 주간 업무 보고 <span class="text-gray-500 font-normal text-xl ml-2">(2025.12.08)</span></h1>
+    <h1 class="text-3xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">기술지원본부 주간 업무 보고 <span class="text-gray-500 font-normal text-xl ml-2">(2025.12.15)</span></h1>
 
     
     <!-- 1. 전체 현황 요약 섹션 -->
@@ -88,11 +88,11 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2 mt-1">진행중</span>
-                            <span class="text-lg text-gray-900 font-medium">JT저축은행: 운영서버 구축 후 테스트 페이지 호출 오류 및 WAS/WEB 서버 분리 이관 산출물 작성 등 방문 지원 예정</span>
+                            <span class="text-lg text-gray-900 font-medium">메리츠화재: 기능 개선 요청건 핫픽스 처리 및 전달중</span>
                         </li>
                         <li class="flex items-start">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2 mt-1">완료</span>
-                            <span class="text-lg text-gray-900 font-medium">현대해상: 크롬 143 버전에서 setInstanceValue 동작 변경 오류 발생 / 긴급 핫픽스 전달 / 서비스 조치 보고서 작성</span>
+                            <span class="text-lg text-gray-900 font-medium">현대해상: 크롬 143 버전에서 getInstance Value 동작 변경 오류로 인한 화면 느려짐 / 긴급 핫픽스 패치</span>
                         </li>
                     </ul>
                 </div>
@@ -112,11 +112,7 @@
                     <div class="space-y-1">
                         <div class="flex items-center">
                             <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-700 mr-2">진행중</span>
-                            <span class="text-base text-gray-700">기술지원팀 2025년 가동률 분석 사전 보고 (12/8)</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-700 mr-2">진행중</span>
-                            <span class="text-base text-gray-700">기술지원 가동률 대시보드 - 기술지원 통계(피봇) 확장 개발 디자인 시안 리뷰 (12/8)</span>
+                            <span class="text-base text-gray-700">기술지원 가동률 대시보드 - 기술지원 통계(피봇) 확장 개발 리뷰 후 수정사항 반영 설계 및 시안 요청</span>
                         </div>
                     </div>
                 </div>
@@ -127,10 +123,10 @@
         <div class="mb-8 bg-gray-50 border border-gray-200 rounded-md p-4 w-full flex items-center justify-start gap-10">
              <div>
                 <h4 class="text-base font-bold text-gray-500 uppercase tracking-wider mb-1">신규 라이선스</h4>
-                <p class="text-lg font-semibold text-gray-700">우리카드 (16), LG헬로비전 (72), KDB산업은행 (32), 신한금융지주 (4)</p>
+                <p class="text-lg font-semibold text-gray-700">동원팜스 (4), JT저축은행 (8)</p>
              </div>
              <div class="text-left">
-                <span class="text-2xl font-bold text-gray-600">120</span>
+                <span class="text-2xl font-bold text-gray-600">12</span>
                 <span class="text-base text-gray-500 font-medium"> Core</span>
              </div>
         </div>
@@ -175,10 +171,10 @@
                 <div>
                     <h3 class="text-xl font-bold text-green-700 mb-4">주요 진행 완료 및 이슈 내역</h3>
                     <ul class="space-y-3">
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2">완료</span><span class="font-bold text-gray-700">롯데슈퍼:</span> cvs 커밋 컴파일 에러 처리</li>
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2">완료</span><span class="font-bold text-gray-700">NH농협은행:</span> 운영환경에서 형상관리 빌드 도구 지원 방안</li>
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">진행중</span><span class="font-bold text-gray-700">주택도시보증공사 차세대:</span> 쿠버네티스 파드 설치 지원 진행중, 배치 JOB 추가, JSON 오브젝트 필터, 기타등등</li>
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">진행중</span><span class="font-bold text-gray-700">탁그 주식회사:</span> 프로웍스 설치 지원에 필요한 자원 준비(인스웨이브재팬)</li>
+                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2">완료</span><span class="font-bold text-gray-700">건설공제조합:</span> as-is to-be서버로 이관후 배치 실행시 db 에러 가이드</li>
+                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2">완료</span><span class="font-bold text-gray-700">국민연금공단:</span> ScmHttpClientUtil 호출 환경세팅 방법 추가 테스트 및 방문 가이드</li>
+                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">진행중</span><span class="font-bold text-gray-700">한국예탁결제원:</span> TMS (배치) 즉시실행 멈추는 상태 발생 장애 처리, 원인 분석중</li>
+                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">진행중</span><span class="font-bold text-gray-700">탁그 주식회사:</span> ProWorks5 일본 ElAdmin(관리자), Runtime, Batch 설치</li>
                     </ul>
                 </div>
             </div>
@@ -189,17 +185,17 @@
              <!-- 1. 정기 점검 -->
              <div>
                 <span class="text-base font-semibold text-gray-500 mr-2">정기 점검:</span>
-                <span class="text-lg text-gray-700 font-bold">7 건</span>
+                <span class="text-lg text-gray-700 font-bold">11 건</span>
              </div>
-             <!-- 2. 신규 접수 (기술 문의 및 장애대응 등 16건 + 설치 지원 및 패치 1건) -->
+             <!-- 2. 신규 접수 -->
              <div>
                 <span class="text-base font-semibold text-gray-500 mr-2">신규 접수:</span>
-                <span class="text-lg text-gray-800 font-bold">17 건</span>
+                <span class="text-lg text-gray-800 font-bold">25 건</span>
              </div>
-             <!-- 3. 누적 진행 중 (기술 문의 및 장애대응 등 2건 + 설치 지원 및 패치 1건) -->
+             <!-- 3. 누적 진행 중 -->
              <div>
                 <span class="text-base font-semibold text-gray-500 mr-2">누적 진행 중:</span>
-                <span class="text-lg text-gray-700 font-bold">기술문의 2건 / 설치 1건</span>
+                <span class="text-lg text-gray-700 font-bold">기술문의 4건 / 설치 3건</span>
              </div>
         </div>
 
@@ -229,8 +225,12 @@
                     <h3 class="text-xl font-bold text-orange-700 mb-2">주요 진행 이슈</h3>
                     <ul class="space-y-2">
                         <li class="flex items-start">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 mr-2 mt-1">진행중</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2 mt-1">완료</span>
                             <span class="text-lg text-gray-900 font-medium">하나은행 스마트창구: 나라사랑카드 오프라인 모드 적용</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 mr-2 mt-1">진행중</span>
+                            <span class="text-lg text-gray-900 font-medium">OK저축은행: Android Crash 로그 분석 요청</span>
                         </li>
                     </ul>
                 </div>
@@ -242,7 +242,7 @@
              <!-- 1. 신규 접수 -->
              <div>
                 <span class="text-base font-semibold text-gray-500 mr-2">신규 접수:</span>
-                <span class="text-lg text-gray-600 font-bold">0 건</span>
+                <span class="text-lg text-gray-600 font-bold">1 건</span>
              </div>
              <!-- 2. 누적 진행 중 -->
              <div>
@@ -294,12 +294,12 @@
             red: 'rgba(220, 38, 38, 0.85)'
         };
 
-        // --- 2025.12.08 차트 데이터 ---
+        // --- 2025.12.15 차트 데이터 ---
 
         // 1. 제품별 총 접수 건수 차트
         const overallReceivedCtx = document.getElementById('overallReceivedChart').getContext('2d');
-        // WebSquare: 164, ProWorks: 17, Matrix Mobile: 0
-        const overallReceivedData = [164, 17, 0]; 
+        // WebSquare: 137, ProWorks: 22+3=25, Matrix Mobile: 1
+        const overallReceivedData = [137, 25, 1]; 
         new Chart(overallReceivedCtx, {
             type: 'bar',
             data: {
@@ -328,8 +328,8 @@
 
         // 2. 제품별 진행 중 건수 (누적) 차트
         const overallInProgressCtx = document.getElementById('overallInProgressChart').getContext('2d');
-        // WebSquare: 13, ProWorks: 3, Matrix Mobile: 1
-        const overallInProgressData = [13, 3, 1]; 
+        // WebSquare: 15, ProWorks: 4+3=7, Matrix Mobile: 1
+        const overallInProgressData = [15, 7, 1]; 
         new Chart(overallInProgressCtx, {
             type: 'bar',
             data: {
@@ -363,9 +363,9 @@
             data: {
                 labels: ['엔지니어 개별 문의', '서비스데스크 W-Tech'],
                 datasets: [
-                    { label: '접수', data: [105, 59], backgroundColor: colors.blue, borderRadius: 4 }, 
-                    { label: '완료', data: [96, 55], backgroundColor: colors.green, borderRadius: 4 }, 
-                    { label: '진행중', data: [9, 4], backgroundColor: colors.orange, borderRadius: 4 } 
+                    { label: '접수', data: [94, 43], backgroundColor: colors.blue, borderRadius: 4 }, 
+                    { label: '완료', data: [84, 38], backgroundColor: colors.green, borderRadius: 4 }, 
+                    { label: '진행중', data: [10, 5], backgroundColor: colors.orange, borderRadius: 4 } 
                 ]
             },
             options: {
@@ -380,13 +380,13 @@
 
         // 4. WebSquare 진행 중 상세 차트
         const wsInProgressDetailCtx = document.getElementById('wsInProgressDetailChart').getContext('2d');
-        // 분석: 4 + 3 = 7, 지라: 5 + 1 = 6. 총 13건
+        // 분석: 7 + 3 = 10, 지라: 3 + 2 = 5. 총 15건
         new Chart(wsInProgressDetailCtx, {
             type: 'doughnut',
             data: {
                 labels: ['분석', '지라'],
                 datasets: [{
-                    data: [7, 6], 
+                    data: [10, 5], 
                     backgroundColor: [colors.lightBlue, colors.orange], 
                     borderWidth: 2,
                     borderColor: '#ffffff'
@@ -407,8 +407,8 @@
 
         // 5. WebSquare 지원 유형별 현황 차트
         const wsSupportTypeCtx = document.getElementById('wsSupportTypeChart').getContext('2d');
-        // 설치 0, 패치 2, 정기점검 54, 장애 0
-        const wsSupportTypeData = [0, 2, 54, 0]; 
+        // 설치 1, 패치 2, 정기점검 59, 장애 0
+        const wsSupportTypeData = [1, 2, 59, 0]; 
         new Chart(wsSupportTypeCtx, {
             type: 'bar',
             data: {
@@ -440,16 +440,16 @@
             data: {
                 labels: ['기술 문의/장애', '설치/패치'],
                 datasets: [
-                    { label: '접수', data: [16, 1], backgroundColor: colors.blue, borderRadius: 4 }, 
-                    { label: '완료', data: [16, 1], backgroundColor: colors.green, borderRadius: 4 }, 
-                    { label: '진행중 (누적)', data: [2, 1], backgroundColor: colors.orange, borderRadius: 4 } 
+                    { label: '접수', data: [22, 3], backgroundColor: colors.blue, borderRadius: 4 }, 
+                    { label: '완료', data: [20, 0], backgroundColor: colors.green, borderRadius: 4 }, 
+                    { label: '진행중 (누적)', data: [4, 3], backgroundColor: colors.orange, borderRadius: 4 } 
                 ]
             },
             options: {
                 responsive: true, maintainAspectRatio: false,
                 scales: { 
                     x: { grid: { display: false } },
-                    y: { beginAtZero: true, suggestedMax: 20, grid: { borderDash: [4, 4], color: '#e5e7eb' } } 
+                    y: { beginAtZero: true, suggestedMax: 25, grid: { borderDash: [4, 4], color: '#e5e7eb' } } 
                 },
                 plugins: { legend: { position: 'top', align: 'end', labels: { boxWidth: 12, font: { weight: 'bold' } } } }
             }
@@ -462,8 +462,8 @@
             data: {
                 labels: ['기술 문의/장애', '설치/패치'],
                  datasets: [
-                    { label: '접수', data: [0, 0], backgroundColor: colors.blue, borderRadius: 4 }, 
-                    { label: '완료', data: [0, 0], backgroundColor: colors.green, borderRadius: 4 }, 
+                    { label: '접수', data: [1, 0], backgroundColor: colors.blue, borderRadius: 4 }, 
+                    { label: '완료', data: [1, 0], backgroundColor: colors.green, borderRadius: 4 }, 
                     { label: '진행중 (누적)', data: [1, 0], backgroundColor: colors.orange, borderRadius: 4 } 
                 ]
             },
