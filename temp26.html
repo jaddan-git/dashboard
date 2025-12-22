@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기술지원본부 주간 업무 보고 (2025.12.22 - 2026 Pilot v16)</title>
+    <title>기술지원본부 주간 업무 보고 (2025.12.22 - 2026 Pilot v18)</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,32 +18,33 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         
-        /* 차트 높이 조정 */
+        /* 차트 높이 조정 (폰트 확대에 맞춰 넉넉하게) */
         .chart-wrapper {
-            height: 300px;
+            height: 360px;
             width: 100%;
             position: relative;
         }
         
-        /* 테이블 스타일 */
+        /* 테이블 스타일 (폰트 15px로 확대) */
         .custom-table th, .custom-table td {
-            padding: 8px 10px;
+            padding: 12px 14px; /* 패딩 확대 */
             text-align: center;
             border: 1px solid #e5e7eb;
-            font-size: 13px;
+            font-size: 15px; /* 폰트 확대 */
         }
         .custom-table th {
             background-color: #f9fafb;
-            font-weight: 600;
-            color: #374151;
-            font-size: 14px;
+            font-weight: 700;
+            color: #1f2937; /* 더 진한 색상 */
+            font-size: 16px;
         }
         .bg-sub-header {
             background-color: #f3f4f6;
-            font-weight: 600;
+            font-weight: 700;
             text-align: left;
-            padding-left: 12px;
-            color: #4b5563;
+            padding-left: 20px;
+            color: #374151;
+            font-size: 16px;
         }
         
         /* 스크롤바 커스텀 */
@@ -56,26 +57,26 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 p-6 md:p-10 text-gray-900">
+<body class="bg-gray-50 p-6 md:p-12 text-gray-900">
 
     <!-- Header -->
-    <div class="text-center mb-10">
-        <span class="inline-block py-1.5 px-4 rounded-full bg-indigo-100 text-indigo-700 text-sm font-bold tracking-widest mb-3">2026 PREVIEW PILOT</span>
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">기술지원본부 주간 업무 보고 <span class="text-gray-500 font-normal text-2xl ml-2">(12/22)</span></h1>
+    <div class="text-center mb-12">
+        <span class="inline-block py-2 px-6 rounded-full bg-indigo-100 text-indigo-700 text-base font-bold tracking-widest mb-4">2026 PREVIEW PILOT</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">기술지원본부 주간 업무 보고 <span class="text-gray-500 font-normal text-3xl ml-3">(12/22)</span></h1>
     </div>
 
     <!-- 1. 전체 현황 요약 -->
-    <section class="mb-10 bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
-        <h2 class="text-lg font-bold text-gray-800 mb-6 border-b pb-3">전체 현황 요약</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <section class="mb-12 bg-white p-10 rounded-3xl shadow-sm border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8 border-b pb-4">전체 현황 요약</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-                <h3 class="text-base font-bold text-gray-600 mb-4 text-center">제품별 총 접수 건수</h3>
+                <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">제품별 총 접수 건수</h3>
                 <div class="chart-wrapper">
                     <canvas id="overallReceivedChart"></canvas>
                 </div>
             </div>
             <div>
-                <h3 class="text-base font-bold text-gray-600 mb-4 text-center">제품별 진행 중 건수 (누적)</h3>
+                <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">제품별 진행 중 건수 (누적)</h3>
                 <div class="chart-wrapper">
                     <canvas id="overallInProgressChart"></canvas>
                 </div>
@@ -84,80 +85,81 @@
     </section>
 
     <!-- 2. WebSquare / WebTop 상세 -->
-    <section class="mb-10 bg-white p-8 rounded-2xl shadow-md border-t-4 border-indigo-600">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold text-gray-800">WebSquare / WebTop 상세</h2>
+    <section class="mb-12 bg-white p-10 rounded-3xl shadow-md border-t-8 border-indigo-600">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800">WebSquare / WebTop 상세</h2>
         </div>
 
-        <!-- Top Row: Issues & License (Grid 3 Columns - Compact Style) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Top Row: Issues & License (Updated Format) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             
             <!-- Major Issue -->
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r shadow-sm">
-                <h3 class="text-base font-bold text-red-700 mb-2 flex items-center">
-                    <i class="fa-solid fa-triangle-exclamation mr-2"></i>주요 이슈
+            <div class="bg-red-50 border-l-8 border-red-500 p-6 rounded-r-xl shadow-sm">
+                <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center">
+                    <i class="fa-solid fa-triangle-exclamation mr-3"></i>주요 이슈
                 </h3>
-                <div class="text-sm text-gray-800 leading-snug">
-                    <div class="flex items-center mb-1">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-red-100 text-red-800 mr-2">진행중</span>
-                        <span class="font-bold">메리츠화재</span>
+                <div class="text-lg text-gray-800 leading-snug">
+                    <div class="font-bold mb-2">
+                        <span class="text-red-600">[진행중]</span> 메리츠화재
                     </div>
-                    <div class="text-gray-600 text-xs ml-1">기능 개선 요청건 핫픽스 처리 및 전달중</div>
+                    <div class="text-base text-gray-700 pl-3 border-l-4 border-red-200">
+                        기능 개선 요청건 핫픽스 처리 및 전달중
+                    </div>
                 </div>
             </div>
             
             <!-- System Issue -->
-            <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r shadow-sm">
-                <h3 class="text-base font-bold text-purple-700 mb-2 flex items-center">
-                    <i class="fa-solid fa-gears mr-2"></i>기타 (시스템)
+            <div class="bg-purple-50 border-l-8 border-purple-500 p-6 rounded-r-xl shadow-sm">
+                <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center">
+                    <i class="fa-solid fa-gears mr-3"></i>기타 (시스템)
                 </h3>
-                <div class="text-sm text-gray-800 leading-snug">
-                    <div class="flex items-center mb-1">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-gray-200 text-gray-700 mr-2">홀드</span>
-                        <span class="font-bold">가동률 대시보드</span>
+                <div class="text-lg text-gray-800 leading-snug">
+                    <div class="font-bold mb-2">
+                        <span class="text-gray-600">[홀드]</span> 가동률 대시보드
                     </div>
-                    <div class="text-gray-600 text-xs ml-1">통합자원할당 선개발 진행으로 인한 홀드</div>
+                    <div class="text-base text-gray-700 pl-3 border-l-4 border-purple-200">
+                        통합자원할당 선개발 진행으로 인한 홀드
+                    </div>
                 </div>
             </div>
 
-            <!-- License Card (Gray Background Style) -->
-            <div class="bg-gray-50 border border-gray-200 border-l-4 border-l-indigo-500 p-4 rounded-r shadow-sm flex flex-col justify-between">
+            <!-- License Card -->
+            <div class="bg-gray-50 border border-gray-200 border-l-8 border-l-indigo-500 p-6 rounded-r-xl shadow-sm flex flex-col justify-between">
                  <div>
-                    <h3 class="text-base font-bold text-indigo-700 mb-2 flex items-center">
-                        <i class="fa-solid fa-id-card mr-2"></i>신규 라이선스
+                    <h3 class="text-xl font-bold text-indigo-700 mb-4 flex items-center">
+                        <i class="fa-solid fa-id-card mr-3"></i>신규 라이선스
                     </h3>
-                    <div class="flex justify-between items-center text-sm text-gray-800 border-b border-gray-200 pb-1 mb-1">
-                        <span class="font-semibold">SKT SWING</span>
-                        <span class="font-bold text-indigo-600">36 Core</span>
+                    <div class="text-lg text-gray-800 font-bold pl-1">
+                        SKT SWING <span class="text-indigo-600 ml-1">(36)</span>
                     </div>
                  </div>
-                 <div class="text-right mt-auto">
-                    <span class="text-xs text-gray-500 mr-1">Total</span>
-                    <span class="text-2xl font-bold text-gray-700">36</span>
-                    <span class="text-sm text-gray-500 font-medium"> Core</span>
+                 <div class="text-right mt-2">
+                    <span class="text-sm text-gray-500 mr-2">Total</span>
+                    <span class="text-4xl font-extrabold text-gray-800">36</span>
+                    <span class="text-lg text-gray-500 font-medium"> Core</span>
                  </div>
             </div>
         </div>
 
-        <!-- Bottom Row: Charts (Grid 3 Columns) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Bottom Row: Charts (Same as v17) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Chart 1 -->
-            <div class="bg-white p-4 rounded-xl border border-gray-200">
-                <h4 class="text-base font-bold text-gray-600 text-center mb-4">채널별 현황</h4>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                <h4 class="text-xl font-bold text-gray-700 text-center mb-6">채널별 현황</h4>
                 <div class="chart-wrapper">
                     <canvas id="wsChannelChart"></canvas>
                 </div>
             </div>
             <!-- Chart 2 -->
-            <div class="bg-white p-4 rounded-xl border border-gray-200">
-                <h4 class="text-base font-bold text-gray-600 text-center mb-4">진행 중 상세</h4>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                <h4 class="text-xl font-bold text-gray-700 text-center mb-6">진행 중 상세</h4>
                 <div class="chart-wrapper">
                     <canvas id="wsInProgressDetailChart"></canvas>
                 </div>
             </div>
             <!-- Chart 3 -->
-            <div class="bg-white p-4 rounded-xl border border-gray-200">
-                <h4 class="text-base font-bold text-gray-600 text-center mb-4">지원 유형별 현황</h4>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                <h4 class="text-xl font-bold text-gray-700 text-center mb-6">지원 유형별 현황</h4>
                 <div class="chart-wrapper">
                     <canvas id="wsSupportTypeChart"></canvas>
                 </div>
@@ -166,45 +168,45 @@
     </section>
 
     <!-- 3. ProWorks / Mobile 상세 -->
-    <section class="mb-10 bg-white p-8 rounded-2xl shadow-md border-t-4 border-green-600">
-        <h2 class="text-2xl font-bold text-gray-800 mb-8">ProWorks / Matrix Mobile 상세</h2>
+    <section class="mb-12 bg-white p-10 rounded-3xl shadow-md border-t-8 border-green-600">
+        <h2 class="text-3xl font-bold text-gray-800 mb-10">ProWorks / Matrix Mobile 상세</h2>
         
-        <!-- Top Row: Issue List (Full Width) -->
-        <div class="mb-8">
-            <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r shadow-sm">
-                <h3 class="text-lg font-bold text-green-800 mb-4 flex items-center"><i class="fa-solid fa-list-check mr-2"></i>주요 진행 내역</h3>
+        <!-- Top Row: Issue List -->
+        <div class="mb-10">
+            <div class="bg-green-50 border-l-8 border-green-500 p-8 rounded-r-xl shadow-sm">
+                <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center"><i class="fa-solid fa-list-check mr-3"></i>주요 진행 내역</h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <!-- ProWorks List -->
                     <div>
-                        <div class="mb-3 font-bold text-sm text-green-900 border-b border-green-200 pb-2">ProWorks</div>
-                        <ul class="text-sm space-y-3 text-gray-700">
+                        <div class="mb-4 font-bold text-xl text-green-900 border-b-2 border-green-200 pb-2">ProWorks</div>
+                        <ul class="space-y-4 text-base text-gray-800">
                             <li class="flex items-start">
-                                <span class="flex-shrink-0 bg-green-200 text-green-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">완료</span>
+                                <span class="flex-shrink-0 bg-green-200 text-green-900 text-sm font-bold px-3 py-1 rounded mr-3 mt-0.5">완료</span>
                                 <div>
-                                    <span class="font-bold text-gray-900">탁그 주식회사</span>
-                                    <span class="block text-gray-600">PW5 설치 지원, 동적 멀티 테넌트 적용</span>
+                                    <span class="font-bold text-lg block">탁그 주식회사</span>
+                                    <span class="text-gray-700">PW5 설치 지원, 동적 멀티 테넌트 적용</span>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="flex-shrink-0 bg-green-200 text-green-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">완료</span>
+                                <span class="flex-shrink-0 bg-green-200 text-green-900 text-sm font-bold px-3 py-1 rounded mr-3 mt-0.5">완료</span>
                                 <div>
-                                    <span class="font-bold text-gray-900">주택도시보증공사 (차세대)</span>
-                                    <span class="block text-gray-600">쿠버네티스 파드 개발/테스트서버 설치</span>
+                                    <span class="font-bold text-lg block">주택도시보증공사 (차세대)</span>
+                                    <span class="text-gray-700">쿠버네티스 파드 개발/테스트서버 설치</span>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="flex-shrink-0 bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">진행</span>
+                                <span class="flex-shrink-0 bg-orange-200 text-orange-900 text-sm font-bold px-3 py-1 rounded mr-3 mt-0.5">진행</span>
                                 <div>
-                                    <span class="font-bold text-gray-900">더케이예다함</span>
-                                    <span class="block text-gray-600">U2L 사업 서버 이관 및 설치 작업 지원</span>
+                                    <span class="font-bold text-lg block">더케이예다함</span>
+                                    <span class="text-gray-700">U2L 사업 서버 이관 및 설치 작업 지원</span>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="flex-shrink-0 bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">진행</span>
+                                <span class="flex-shrink-0 bg-orange-200 text-orange-900 text-sm font-bold px-3 py-1 rounded mr-3 mt-0.5">진행</span>
                                 <div>
-                                    <span class="font-bold text-gray-900">주택도시보증공사 (차세대)</span>
-                                    <span class="block text-gray-600">쿠버네티스 파드 운영 설치 작업 지원</span>
+                                    <span class="font-bold text-lg block">주택도시보증공사 (차세대)</span>
+                                    <span class="text-gray-700">쿠버네티스 파드 운영 설치 작업 지원</span>
                                 </div>
                             </li>
                         </ul>
@@ -212,20 +214,20 @@
 
                     <!-- Matrix Mobile List -->
                     <div>
-                        <div class="mb-3 font-bold text-sm text-blue-900 border-b border-blue-200 pb-2">Matrix Mobile</div>
-                        <ul class="text-sm space-y-3 text-gray-700">
+                        <div class="mb-4 font-bold text-xl text-blue-900 border-b-2 border-blue-200 pb-2">Matrix Mobile</div>
+                        <ul class="space-y-4 text-base text-gray-800">
                             <li class="flex items-start">
-                                <span class="flex-shrink-0 bg-green-200 text-green-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">완료</span>
+                                <span class="flex-shrink-0 bg-green-200 text-green-900 text-sm font-bold px-3 py-1 rounded mr-3 mt-0.5">완료</span>
                                 <div>
-                                    <span class="font-bold text-gray-900">OK저축은행</span>
-                                    <span class="block text-gray-600">Android Crash 로그 분석 완료</span>
+                                    <span class="font-bold text-lg block">OK저축은행</span>
+                                    <span class="text-gray-700">Android Crash 로그 분석 완료</span>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="flex-shrink-0 bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">진행</span>
+                                <span class="flex-shrink-0 bg-orange-200 text-orange-900 text-sm font-bold px-3 py-1 rounded mr-3 mt-0.5">진행</span>
                                 <div>
-                                    <span class="font-bold text-gray-900">국군의무사</span>
-                                    <span class="block text-gray-600">생체인증 모듈 업데이트</span>
+                                    <span class="font-bold text-lg block">국군의무사</span>
+                                    <span class="text-gray-700">생체인증 모듈 업데이트</span>
                                 </div>
                             </li>
                         </ul>
@@ -235,15 +237,15 @@
         </div>
 
         <!-- Bottom Row: Charts -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-4 rounded-xl border border-gray-200">
-                <h4 class="text-base font-bold text-gray-600 text-center mb-4">ProWorks 지원 현황</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                <h4 class="text-xl font-bold text-gray-700 text-center mb-6">ProWorks 지원 현황</h4>
                 <div class="chart-wrapper">
                     <canvas id="proWorksStatusChart"></canvas>
                 </div>
             </div>
-            <div class="bg-white p-4 rounded-xl border border-gray-200">
-                <h4 class="text-base font-bold text-gray-600 text-center mb-4">Matrix Mobile 지원 현황</h4>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                <h4 class="text-xl font-bold text-gray-700 text-center mb-6">Matrix Mobile 지원 현황</h4>
                 <div class="chart-wrapper">
                     <canvas id="matrixMobileStatusChart"></canvas>
                 </div>
@@ -252,69 +254,69 @@
     </section>
 
     <!-- 4. 교육 / 품질 / POC -->
-    <section class="mb-10 bg-white p-8 rounded-2xl shadow-md border-t-4 border-pink-500">
-        <div class="flex items-center mb-8">
-            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-3 text-pink-600">
-                <i class="fa-solid fa-graduation-cap text-xl"></i>
+    <section class="mb-12 bg-white p-10 rounded-3xl shadow-md border-t-8 border-pink-500">
+        <div class="flex items-center mb-10">
+            <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mr-4 text-pink-600">
+                <i class="fa-solid fa-graduation-cap text-2xl"></i>
             </div>
-            <h2 class="text-2xl font-bold text-gray-800">교육 / 품질 / POC</h2>
+            <h2 class="text-3xl font-bold text-gray-800">교육 / 품질 / POC</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
             
             <!-- Column 1: POC & Document & Sample -->
-            <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-8">
                 <!-- POC Card -->
-                <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-base text-gray-800 mb-3 pb-2 border-b border-gray-300 flex justify-between">
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-xl text-gray-800 mb-4 pb-3 border-b border-gray-300 flex justify-between">
                         <span><i class="fa-solid fa-flask mr-2 text-pink-500"></i>POC 진행</span>
                     </h3>
-                    <div class="space-y-3 text-sm">
+                    <div class="space-y-4 text-base">
                         <div>
-                            <span class="font-bold text-gray-900 block mb-1">LH 공사 (진주 방문 협의)</span>
-                            <span class="text-gray-600 block pl-2">- 일시: 12.22(월) 10시~</span>
-                            <span class="text-gray-600 block pl-2">- POC 자료: 동적 UI 생성 화면 작성중</span>
+                            <span class="font-bold text-gray-900 block mb-1 text-lg">LH 공사 (진주 방문 협의)</span>
+                            <span class="text-gray-700 block pl-4">- 일시: 12.22(월) 10시~</span>
+                            <span class="text-gray-700 block pl-4">- POC 자료: 동적 UI 생성 화면 작성중</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Docs/Sample Card -->
-                <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 flex-grow shadow-sm">
-                    <h3 class="font-bold text-base text-gray-800 mb-3 pb-2 border-b border-gray-300">
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex-grow shadow-sm">
+                    <h3 class="font-bold text-xl text-gray-800 mb-4 pb-3 border-b border-gray-300">
                         <i class="fa-solid fa-book mr-2 text-pink-500"></i>문서 / 샘플
                     </h3>
                     
                     <!-- Document List -->
-                    <ul class="text-sm text-gray-700 space-y-2 mb-4">
+                    <ul class="text-base text-gray-800 space-y-4 mb-8">
                         <li>
                             <span class="font-bold text-gray-900 block mb-1">한국어 기술문서</span>
-                            <span class="block pl-2 text-gray-600">- SP5 엔진 (5.5326B)</span>
-                            <span class="block pl-2 text-gray-600">- Matrix Studio (6.0.0)</span>
+                            <span class="block pl-4 text-gray-600">- SP5 엔진 (5.5326B)</span>
+                            <span class="block pl-4 text-gray-600">- Matrix Studio (6.0.0)</span>
                         </li>
                         <li>
                             <span class="font-bold text-gray-900 block mb-1">영어 기술문서</span>
-                            <span class="block pl-2 text-gray-600">- AI Engine (0.1396B)</span>
+                            <span class="block pl-4 text-gray-600">- AI Engine (0.1396B)</span>
                         </li>
                     </ul>
 
                     <!-- Progress Bars -->
-                    <div class="pt-4 border-t border-gray-300 space-y-4">
+                    <div class="pt-6 border-t border-gray-300 space-y-6">
                         <div>
-                            <div class="flex justify-between text-sm mb-1">
+                            <div class="flex justify-between text-base mb-2">
                                 <span class="font-bold text-gray-800">API 개선 (3,097/5,933)</span>
                                 <span class="font-bold text-pink-600">52.2%</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-pink-500 h-2.5 rounded-full" style="width: 52.2%"></div>
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div class="bg-pink-500 h-4 rounded-full" style="width: 52.2%"></div>
                             </div>
                         </div>
                         <div>
-                            <div class="flex justify-between text-sm mb-1">
+                            <div class="flex justify-between text-base mb-2">
                                 <span class="font-bold text-gray-800">샘플 개발 (1,532/5,905)</span>
                                 <span class="font-bold text-pink-600">25.8%</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-pink-400 h-2.5 rounded-full" style="width: 25.8%"></div>
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div class="bg-pink-400 h-4 rounded-full" style="width: 25.8%"></div>
                             </div>
                         </div>
                     </div>
@@ -322,26 +324,26 @@
             </div>
 
             <!-- Column 2: Quality -->
-            <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-sm">
-                <h3 class="font-bold text-base text-gray-800 mb-3 pb-2 border-b border-gray-300">
+            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <h3 class="font-bold text-xl text-gray-800 mb-4 pb-3 border-b border-gray-300">
                     <i class="fa-solid fa-robot mr-2 text-pink-500"></i>품질
                 </h3>
                 
                 <!-- 1. QA Grid Table -->
-                <h4 class="font-bold text-sm text-gray-700 mb-2">QA 금주 현황</h4>
-                <div class="overflow-hidden border rounded-lg border-gray-300 mb-6">
+                <h4 class="font-bold text-lg text-gray-700 mb-4">QA 금주 현황</h4>
+                <div class="overflow-hidden border rounded-xl border-gray-300 mb-8">
                     <table class="w-full custom-table bg-white">
                         <thead>
                             <tr>
-                                <th>항목</th>
-                                <th>금주</th>
-                                <th>누적</th>
+                                <th class="py-3">항목</th>
+                                <th class="py-3">금주</th>
+                                <th class="py-3">누적</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- WS AI -->
                             <tr>
-                                <td colspan="3" class="bg-sub-header">WebSquare AI</td>
+                                <td colspan="3" class="bg-sub-header py-3">WebSquare AI</td>
                             </tr>
                             <tr>
                                 <td>A</td>
@@ -355,7 +357,7 @@
                             </tr>
                             <!-- WS SP5 -->
                             <tr>
-                                <td colspan="3" class="bg-sub-header">WebSquare SP5</td>
+                                <td colspan="3" class="bg-sub-header py-3">WebSquare SP5</td>
                             </tr>
                             <tr>
                                 <td>A</td>
@@ -369,7 +371,7 @@
                             </tr>
                             <!-- Matrix Mobile -->
                             <tr>
-                                <td colspan="3" class="bg-sub-header">Matrix Mobile</td>
+                                <td colspan="3" class="bg-sub-header py-3">Matrix Mobile</td>
                             </tr>
                             <tr>
                                 <td>iOS</td>
@@ -386,51 +388,51 @@
                 </div>
 
                 <!-- 2. Progress Bars -->
-                <h4 class="font-bold text-sm text-gray-700 mb-2 pt-2 border-t border-gray-300">기타 품질 과업</h4>
-                <div class="space-y-4">
+                <h4 class="font-bold text-lg text-gray-700 mb-4 pt-4 border-t border-gray-300">기타 품질 과업</h4>
+                <div class="space-y-6">
                     <div>
-                        <div class="flex justify-between text-sm mb-1">
+                        <div class="flex justify-between text-base mb-2">
                             <span class="font-bold text-gray-800">DEV PACK 패킹</span>
                             <span class="font-bold text-indigo-600">65%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-indigo-500 h-2.5 rounded-full" style="width: 65%"></div>
+                        <div class="w-full bg-gray-200 rounded-full h-4">
+                            <div class="bg-indigo-500 h-4 rounded-full" style="width: 65%"></div>
                         </div>
-                        <p class="text-xs text-gray-500 mt-1 text-right">GA/Studio/WRE</p>
+                        <p class="text-sm text-gray-500 mt-1 text-right">GA/Studio/WRE</p>
                     </div>
                     <div>
-                        <div class="flex justify-between text-sm mb-1">
+                        <div class="flex justify-between text-base mb-2">
                             <span class="font-bold text-gray-800">품질 환경 전환</span>
                             <span class="font-bold text-teal-600">40%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-teal-500 h-2.5 rounded-full" style="width: 40%"></div>
+                        <div class="w-full bg-gray-200 rounded-full h-4">
+                            <div class="bg-teal-500 h-4 rounded-full" style="width: 40%"></div>
                         </div>
-                        <p class="text-xs text-gray-500 mt-1 text-right">Robot → TestSquare</p>
+                        <p class="text-sm text-gray-500 mt-1 text-right">Robot → TestSquare</p>
                     </div>
                 </div>
             </div>
 
             <!-- Column 3: Education -->
-            <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col">
-                <h3 class="font-bold text-base text-gray-800 mb-4 pb-2 border-b border-gray-300">
+            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col">
+                <h3 class="font-bold text-xl text-gray-800 mb-4 pb-3 border-b border-gray-300">
                     <i class="fa-solid fa-chalkboard-user mr-2 text-pink-500"></i>교육 수료 현황
                 </h3>
                 
                 <!-- Table 1: Regular -->
-                <h4 class="text-sm font-bold text-gray-700 mb-2">과정(정기)</h4>
-                <table class="w-full custom-table bg-white mb-6">
+                <h4 class="text-lg font-bold text-gray-700 mb-3">과정(정기)</h4>
+                <table class="w-full custom-table bg-white mb-8">
                     <thead>
                         <tr>
-                            <th rowspan="2">구분</th>
-                            <th colspan="2">금주</th>
-                            <th colspan="2">누적</th>
+                            <th rowspan="2" class="py-3">구분</th>
+                            <th colspan="2" class="py-3">금주</th>
+                            <th colspan="2" class="py-3">누적</th>
                         </tr>
                         <tr>
-                            <th>회차</th>
-                            <th>인원</th>
-                            <th>회차</th>
-                            <th>인원</th>
+                            <th class="py-3">회차</th>
+                            <th class="py-3">인원</th>
+                            <th class="py-3">회차</th>
+                            <th class="py-3">인원</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -466,19 +468,19 @@
                 </table>
 
                 <!-- Table 2: Visiting -->
-                <h4 class="text-sm font-bold text-gray-700 mb-2">과정(방문)</h4>
+                <h4 class="text-lg font-bold text-gray-700 mb-3">과정(방문)</h4>
                 <table class="w-full custom-table bg-white">
                     <thead>
                         <tr>
-                            <th rowspan="2">구분</th>
-                            <th colspan="2">금주</th>
-                            <th colspan="2">누적</th>
+                            <th rowspan="2" class="py-3">구분</th>
+                            <th colspan="2" class="py-3">금주</th>
+                            <th colspan="2" class="py-3">누적</th>
                         </tr>
                         <tr>
-                            <th>회차</th>
-                            <th>인원</th>
-                            <th>회차</th>
-                            <th>인원</th>
+                            <th class="py-3">회차</th>
+                            <th class="py-3">인원</th>
+                            <th class="py-3">회차</th>
+                            <th class="py-3">인원</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -560,7 +562,7 @@
                     <div class="bg-white p-5 rounded-xl shadow-sm border-l-8 border-orange-400">
                         <div class="flex justify-between items-start mb-3">
                             <h4 class="font-bold text-lg text-gray-800">통합자원할당</h4>
-                            <span class="text-sm bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-bold">~12/31</span>
+                            <span class="text-sm bg-orange-100 text-orange-700 px-3 py-1 rounded font-bold">~12/31</span>
                         </div>
                         <ul class="list-disc list-inside text-base text-gray-700 space-y-2">
                             <li>디자인/퍼블리싱 적용</li>
@@ -573,7 +575,7 @@
                     <div class="bg-white p-5 rounded-xl shadow-sm border-l-8 border-orange-400">
                         <div class="flex justify-between items-start mb-3">
                             <h4 class="font-bold text-lg text-gray-800">외주인력 관리</h4>
-                            <span class="text-sm bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-bold">개선중</span>
+                            <span class="text-sm bg-orange-100 text-orange-700 px-3 py-1 rounded font-bold">개선중</span>
                         </div>
                         <ul class="list-disc list-inside text-base text-gray-700 space-y-2">
                             <li>저장/승인요청 프로세스 개선</li>
@@ -585,7 +587,7 @@
                     <div class="bg-white p-5 rounded-xl shadow-sm border-l-8 border-green-500">
                         <div class="flex justify-between items-start mb-3">
                             <h4 class="font-bold text-lg text-gray-800">매출계약관리</h4>
-                            <span class="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold">운영반영</span>
+                            <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded font-bold">운영반영</span>
                         </div>
                         <p class="text-base text-gray-700">최종고객 조달청인 경우: 직불/대지급 선택 항목 추가</p>
                     </div>
@@ -594,7 +596,7 @@
                     <div class="bg-white p-5 rounded-xl shadow-sm border-l-8 border-green-500">
                         <div class="flex justify-between items-start mb-3">
                             <h4 class="font-bold text-lg text-gray-800">영업관리(지표)</h4>
-                            <span class="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold">운영반영</span>
+                            <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded font-bold">운영반영</span>
                         </div>
                         <p class="text-base text-gray-700">월간보고: 팀별/개인별 엑셀 다운로드 기능 추가</p>
                     </div>
@@ -631,13 +633,13 @@
                     anchor: 'end',
                     align: 'top',
                     offset: -4,
-                    font: { weight: 'bold', size: 15 }, // Label Font Increased
+                    font: { weight: 'bold', size: 16 }, // Chart Font Size 16px
                     formatter: (value) => value > 0 ? value : null
                 }
             },
             scales: {
-                x: { grid: { display: false }, ticks: { font: { size: 14, weight: '600' } } }, // X-axis Font Increased
-                y: { beginAtZero: true, grid: { borderDash: [2, 2] }, ticks: { display: true, font: { size: 13 } }, grace: '15%' }
+                x: { grid: { display: false }, ticks: { font: { size: 15, weight: '600' } } }, // X-axis Font 15px
+                y: { beginAtZero: true, grid: { borderDash: [2, 2] }, ticks: { display: true, font: { size: 14 } }, grace: '15%' }
             }
         };
 
@@ -675,14 +677,14 @@
             options: { 
                 ...commonOptions, 
                 plugins: { 
-                    legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 14 } } }, 
+                    legend: { display: true, position: 'top', labels: { boxWidth: 14, font: { size: 15 } } }, 
                     datalabels: { 
                         display: true, 
                         color: '#333',
                         anchor: 'end',
                         align: 'top',
                         offset: -4,
-                        font: { weight: 'bold', size: 14 },
+                        font: { weight: 'bold', size: 15 },
                         formatter: (value) => value > 0 ? value : null
                     } 
                 } 
@@ -700,10 +702,10 @@
                 responsive: true, maintainAspectRatio: false, cutout: '60%',
                 layout: { padding: 20 },
                 plugins: {
-                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 14, weight: 'bold' } } },
+                    legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 15, weight: 'bold' } } },
                     datalabels: {
                         color: '#333', backgroundColor: 'rgba(255,255,255,0.9)', borderRadius: 4,
-                        font: { size: 15, weight: 'bold' },
+                        font: { size: 16, weight: 'bold' },
                         anchor: 'end', align: 'end', offset: 5,
                         formatter: (val) => val
                     }
@@ -735,14 +737,14 @@
             options: { 
                 ...commonOptions, 
                 plugins: { 
-                    legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 14 } } }, 
+                    legend: { display: true, position: 'top', labels: { boxWidth: 14, font: { size: 15 } } }, 
                     datalabels: { 
                         display: true, 
                         color: '#333',
                         anchor: 'end',
                         align: 'top',
                         offset: -4,
-                        font: { weight: 'bold', size: 14 },
+                        font: { weight: 'bold', size: 15 },
                         formatter: (value) => value > 0 ? value : null
                     }
                 } 
@@ -763,14 +765,14 @@
             options: { 
                 ...commonOptions, 
                 plugins: { 
-                    legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 14 } } }, 
+                    legend: { display: true, position: 'top', labels: { boxWidth: 14, font: { size: 15 } } }, 
                     datalabels: { 
                         display: true, 
                         color: '#333',
                         anchor: 'end',
                         align: 'top',
                         offset: -4,
-                        font: { weight: 'bold', size: 14 },
+                        font: { weight: 'bold', size: 15 },
                         formatter: (value) => value > 0 ? value : null
                     }
                 } 
