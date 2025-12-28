@@ -3,56 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기술지원본부 주간 업무 보고 대시보드 (2025.12.22)</title>
+    <title>기술지원본부 주간 업무 보고 대시보드 (2025.12.29)</title>
     
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Chart.js CDN -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Chart.js Datalabels Plugin CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> 
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
     <style>
-        /* 기본 폰트 설정 */
-        body {
-            font-family: 'Inter', sans-serif; 
-        }
-        /* 차트 컨테이너 스타일 */
+        body { font-family: 'Inter', sans-serif; }
+        
         .chart-container {
             position: relative;
             margin: auto;
-            height: 300px; /* 기본 높이 */
-            width: 100%;   
-            max-width: 100%; 
+            height: 300px;
+            width: 100%;
             margin-bottom: 1rem;
         }
-        /* 작은 차트 컨테이너 (도넛 차트 확대를 위해 높이 320px) */
         .chart-container-small {
-            height: 320px; 
+            height: 320px;
             width: 100%;
-            max-width: 100%;
-        }
-         /* 모바일 환경에서 차트 크기 조정 */
-        @media (max-width: 640px) {
-            .chart-container {
-                height: 250px;
-            }
-             .chart-container-small {
-                height: 280px;
-            }
         }
     </style>
 </head>
-<body class="bg-gray-50 p-4 md:p-8">
+<body class="bg-gray-50 p-6 md:p-10 text-gray-900">
 
-    <h1 class="text-3xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">기술지원본부 주간 업무 보고 <span class="text-gray-500 font-normal text-xl ml-2">(2025.12.22)</span></h1>
+    <h1 class="text-3xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">기술지원본부 주간 업무 보고 <span class="text-gray-500 font-normal text-xl ml-2">(2025.12.29)</span></h1>
 
-    
-    <!-- 1. 전체 현황 요약 섹션 -->
-    <section class="mb-10 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+    <!-- 1. 전체 현황 요약 -->
+    <section class="mb-10 bg-white p-8 rounded-xl shadow-sm border border-gray-200">
         <h2 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2">전체 현황 요약</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div>
                 <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">제품별 총 접수 건수</h3>
                 <div class="chart-container">
@@ -68,81 +54,80 @@
         </div>
     </section>
 
-    <!-- =================================================================================================== -->
-    <!-- 2. WebSquare / WebTop 상세 현황 섹션 -->
-    <!-- =================================================================================================== -->
-    <section class="mb-10 bg-white p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+    <!-- 2. WebSquare / WebTop 상세 현황 -->
+    <section class="mb-10 bg-white p-8 rounded-xl shadow-md border-t-4 border-indigo-600">
         <h2 class="text-2xl font-bold text-gray-800 mb-6">WebSquare / WebTop 상세 현황</h2>
         
-        <!-- [Highlight] 주요 이슈 카드 (Red) -->
-        <div class="mb-4 bg-white border-l-8 border-red-500 rounded-r-lg shadow-lg p-6 ring-1 ring-gray-900/5 relative overflow-hidden">
-            <div class="absolute top-0 right-0 -mt-2 -mr-2 w-16 h-16 bg-red-500 rounded-full opacity-10 blur-xl"></div>
-            <div class="flex items-start">
-                <div class="flex-shrink-0 mr-4">
-                    <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        <!-- 주요 이슈 -->
+        <div class="mb-6 bg-white border-l-8 border-red-500 rounded-r-lg shadow-sm p-6 ring-1 ring-gray-900/5">
+            <h3 class="text-xl font-bold text-red-700 mb-3 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i>주요 이슈</h3>
+            <ul class="space-y-3">
+                <li class="flex items-start text-lg text-gray-800">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-red-100 text-red-800 mr-3 mt-0.5">진행중</span>
+                    <div>
+                        <span class="font-bold">메리츠화재:</span> 기능 개선 요청건 핫픽스 처리 및 전달중
                     </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-red-700 mb-2">주요 이슈</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2 mt-1">진행중</span>
-                            <span class="text-lg text-gray-900 font-medium">메리츠화재: 기능 개선 요청건 핫픽스 처리 및 전달중</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                </li>
+                <li class="flex items-start text-lg text-gray-800">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-red-100 text-red-800 mr-3 mt-0.5">진행중</span>
+                    <div>
+                        <span class="font-bold">신한은행 기업뱅킹:</span> WGear 취약성 조치 현황 및 미적용 환경 추가 조치 방안 협의 예정 (12/29)
+                    </div>
+                </li>
+            </ul>
         </div>
 
-        <!-- [Semi-Highlight] 기타 (시스템 개선) - Purple -->
-        <div class="mb-4 bg-white border-l-8 border-purple-500 rounded-r-lg shadow-md p-5 ring-1 ring-gray-900/5 relative">
-            <div class="flex items-start">
-                <div class="flex-shrink-0 mr-4">
-                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <!-- 기타 (시스템) -->
+        <div class="mb-6 bg-white border-l-8 border-purple-500 rounded-r-lg shadow-sm p-6 ring-1 ring-gray-900/5">
+            <h3 class="text-xl font-bold text-purple-700 mb-3 flex items-center"><i class="fa-solid fa-gears mr-2"></i>기타 (시스템 개선 및 공유)</h3>
+            <ul class="space-y-3">
+                <li class="flex items-start text-lg text-gray-800">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-gray-100 text-gray-700 mr-3 mt-0.5">홀드</span>
+                    <div>
+                        <span class="font-bold">기술지원 가동률 대시보드:</span> 통합자원할당 시스템 선개발 진행으로 인한 홀드
                     </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold text-purple-700 mb-1">기타 (시스템 개선)</h3>
-                    <div class="space-y-1">
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700 mr-2">홀드중</span>
-                            <span class="text-base text-gray-700">기술지원 가동률 대시보드 - 통합자원할당 시스템 선개발 진행으로 인한 홀드</span>
-                        </div>
+                </li>
+                <li class="flex items-start text-lg text-gray-800">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-blue-100 text-blue-800 mr-3 mt-0.5">정보공유</span>
+                    <div>
+                        배승희 프로 육아휴직(1년)으로 인한 변경된 담당자 확인후 지원 요청 요망
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
 
-        <!-- [Low Profile] 신규 라이선스 - 개별 코어 수치 표시 -->
-        <div class="mb-8 bg-gray-50 border border-gray-200 rounded-md p-4 w-full flex items-center justify-start gap-10">
-             <div>
-                <h4 class="text-base font-bold text-gray-500 uppercase tracking-wider mb-1">신규 라이선스</h4>
-                <p class="text-lg font-semibold text-gray-700">SKT SWING (36)</p>
+        <!-- 신규 라이선스 -->
+        <div class="mb-8 bg-gray-50 border border-gray-200 rounded-lg p-5 flex items-center justify-between shadow-sm">
+             <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4">
+                    <i class="fa-solid fa-id-card text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-1">신규 라이선스</h4>
+                    <p class="text-xl font-bold text-gray-800">한국지역정보개발원 (재난안전 상황전파) (64)</p>
+                </div>
              </div>
-             <div class="text-left">
-                <span class="text-2xl font-bold text-gray-600">36</span>
-                <span class="text-base text-gray-500 font-medium"> Core</span>
+             <div class="text-right">
+                <span class="text-3xl font-extrabold text-indigo-600">64</span>
+                <span class="text-lg text-gray-500 font-medium"> Core</span>
              </div>
         </div>
 
         <!-- 차트 영역 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-start border-t border-gray-100 pt-8"> 
-            <div class="w-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-gray-100 pt-8"> 
+            <div>
                 <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">채널별 처리 현황</h3>
                 <div class="chart-container">
                     <canvas id="wsChannelChart"></canvas>
                 </div>
             </div>
-            <div class="w-full">
+            <div>
                 <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">진행 중 상세</h3>
-                <!-- 높이를 키운 컨테이너 사용 -->
                 <div class="chart-container chart-container-small">
                     <canvas id="wsInProgressDetailChart"></canvas>
                 </div>
             </div>
-            <div class="w-full md:col-start-2 xl:col-start-auto">
+            <div>
                 <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">지원 유형별 현황</h3>
                 <div class="chart-container chart-container-small">
                     <canvas id="wsSupportTypeChart"></canvas>
@@ -151,107 +136,67 @@
         </div>
     </section>
 
-    <!-- =================================================================================================== -->
-    <!-- 3. ProWorks 상세 현황 섹션 -->
-    <!-- =================================================================================================== -->
-    <section class="mb-10 bg-white p-6 rounded-xl shadow-md border-t-4 border-green-600">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">ProWorks 상세 현황</h2>
+    <!-- 3. ProWorks / Matrix Mobile 상세 현황 -->
+    <section class="mb-10 bg-white p-8 rounded-xl shadow-md border-t-4 border-green-600">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">ProWorks / Matrix Mobile 상세 현황</h2>
 
-        <!-- [Highlight] 주요 진행 내역 -->
-        <div class="mb-4 bg-white border-l-8 border-green-500 rounded-r-lg shadow-lg p-6 ring-1 ring-gray-900/5 relative">
-             <div class="flex items-start">
-                <div class="flex-shrink-0 mr-4">
-                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                </div>
+        <!-- 주요 진행 내역 -->
+        <div class="mb-8 bg-white border-l-8 border-green-500 rounded-r-lg shadow-sm p-6 ring-1 ring-gray-900/5">
+             <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center"><i class="fa-solid fa-list-check mr-2"></i>주요 진행 완료 및 이슈 내역</h3>
+             
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- ProWorks List -->
                 <div>
-                    <h3 class="text-xl font-bold text-green-700 mb-4">주요 진행 완료 및 이슈 내역</h3>
-                    <ul class="space-y-3">
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2">완료</span><span class="font-bold text-gray-700">탁그 주식회사:</span> 프로웍스5 설치 지원, 동적 멀티 테넌트 적용</li>
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2">완료</span><span class="font-bold text-gray-700">주택도시보증공사 차세대:</span> 쿠버네티스 파드 개발/테스트서버(어드민,업무쪽) 설치</li>
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">진행중</span><span class="font-bold text-gray-700">더케이예다함:</span> U2L 사업 서버 이관 및 설치 작업 지원중</li>
-                        <li class="text-gray-900"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">진행중</span><span class="font-bold text-gray-700">주택도시보증공사 차세대:</span> 쿠버네티스 파드 운영 설치 작업 지원중</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- [Low Profile Text] 기타 통계 -->
-        <div class="mb-8 flex flex-col md:flex-row md:justify-end gap-4 md:gap-8 text-right">
-             <!-- 1. 정기 점검 -->
-             <div>
-                <span class="text-base font-semibold text-gray-500 mr-2">정기 점검:</span>
-                <span class="text-lg text-gray-700 font-bold">5 건</span>
-             </div>
-             <!-- 2. 신규 접수 -->
-             <div>
-                <span class="text-base font-semibold text-gray-500 mr-2">신규 접수:</span>
-                <span class="text-lg text-gray-800 font-bold">36 건</span>
-             </div>
-             <!-- 3. 누적 진행 중 -->
-             <div>
-                <span class="text-base font-semibold text-gray-500 mr-2">누적 진행 중:</span>
-                <span class="text-lg text-gray-700 font-bold">기술문의 4건 / 설치 2건</span>
-             </div>
-        </div>
-
-        <div class="border-t border-gray-100 pt-8">
-            <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">기술지원 및 설치/패치 현황</h3>
-            <div class="chart-container">
-                <canvas id="proWorksStatusChart"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- =================================================================================================== -->
-    <!-- 4. Matrix Mobile 상세 현황 섹션 -->
-    <!-- =================================================================================================== -->
-    <section class="bg-white p-6 rounded-xl shadow-md border-t-4 border-orange-500">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Matrix Mobile 상세 현황</h2>
-
-        <!-- [Highlight] 주요 이슈 카드 -->
-        <div class="mb-4 bg-white border-l-8 border-orange-500 rounded-r-lg shadow-lg p-6 ring-1 ring-gray-900/5 relative">
-            <div class="flex items-start">
-                <div class="flex-shrink-0 mr-4">
-                    <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-orange-700 mb-2">주요 진행 이슈</h3>
-                    <ul class="space-y-2">
+                    <div class="mb-3 pb-2 border-b border-green-100 font-bold text-green-900">ProWorks</div>
+                    <ul class="space-y-3 text-lg text-gray-800">
                         <li class="flex items-start">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2 mt-1">완료</span>
-                            <span class="text-lg text-gray-900 font-medium">OK저축은행: Android Crash 로그 분석 요청</span>
+                            <span class="flex-shrink-0 inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-green-100 text-green-800 mr-3 mt-0.5">완료</span>
+                            <div><span class="font-bold">주택도시보증공사:</span> 웹 콘솔 화면 오류 문의 지원</div>
                         </li>
                         <li class="flex items-start">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 mr-2 mt-1">진행중</span>
-                            <span class="text-lg text-gray-900 font-medium">국군의무사: 생체인증 모듈 업데이트</span>
+                            <span class="flex-shrink-0 inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-green-100 text-green-800 mr-3 mt-0.5">완료</span>
+                            <div><span class="font-bold">더케이예다함:</span> U2L 사업 스튜디오 이관 설치 방문 지원</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-green-100 text-green-800 mr-3 mt-0.5">완료</span>
+                            <div><span class="font-bold">탁그 주식회사:</span> SVN 연동 문의 및 개발 가이드 전달</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-orange-100 text-orange-800 mr-3 mt-0.5">진행중</span>
+                            <div><span class="font-bold">한국예탁결제원:</span> TMS 즉시 실행, 배치 프로세스 분석중</div>
                         </li>
                     </ul>
                 </div>
+
+                <!-- Mobile List -->
+                <div>
+                    <div class="mb-3 pb-2 border-b border-blue-100 font-bold text-blue-900">Matrix Mobile</div>
+                    <ul class="space-y-3 text-lg text-gray-800">
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-orange-100 text-orange-800 mr-3 mt-0.5">진행중</span>
+                            <div><span class="font-bold">UI 뱅크:</span> Android crash 분석</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold bg-orange-100 text-orange-800 mr-3 mt-0.5">진행중</span>
+                            <div><span class="font-bold">국군의무사:</span> 생체인증 모듈 업데이트</div>
+                        </li>
+                    </ul>
+                </div>
+             </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-gray-100 pt-8">
+            <div>
+                <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">ProWorks 지원 현황</h3>
+                <div class="chart-container">
+                    <canvas id="proWorksStatusChart"></canvas>
+                </div>
             </div>
-        </div>
-
-        <!-- [Low Profile Text] 기타 통계 -->
-        <div class="mb-8 flex flex-col md:flex-row md:justify-end gap-4 md:gap-8 text-right">
-             <!-- 1. 신규 접수 -->
-             <div>
-                <span class="text-base font-semibold text-gray-500 mr-2">신규 접수:</span>
-                <span class="text-lg text-gray-600 font-bold">1 건</span>
-             </div>
-             <!-- 2. 누적 진행 중 -->
-             <div>
-                <span class="text-base font-semibold text-gray-500 mr-2">누적 진행 중:</span>
-                <span class="text-lg text-gray-600 font-bold">기술 문의/장애 1 건</span>
-             </div>
-        </div>
-
-        <div class="border-t border-gray-100 pt-8">
-            <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">기술지원 및 설치/패치 현황</h3>
-            <div class="chart-container">
-                <canvas id="matrixMobileStatusChart"></canvas>
+            <div>
+                <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">Matrix Mobile 지원 현황</h3>
+                <div class="chart-container">
+                    <canvas id="matrixMobileStatusChart"></canvas>
+                </div>
             </div>
         </div>
     </section>
@@ -260,7 +205,7 @@
         // Chart.js Datalabels 플러그인 등록
         Chart.register(ChartDataLabels);
 
-        // Chart.js 전역 플러그인 기본 설정 (차트 내부 폰트 크기 확대 유지)
+        // Chart.js 전역 플러그인 기본 설정
         Chart.defaults.set('plugins.datalabels', {
             color: '#1F2937', 
             anchor: 'end',
@@ -274,7 +219,7 @@
             }
         });
 
-        // --- 고급스러운 색상 팔레트 정의 (Modern Corporate) ---
+        // --- 고급스러운 색상 팔레트 정의 ---
         const colors = {
             blue: 'rgba(30, 58, 138, 0.85)', 
             green: 'rgba(5, 150, 105, 0.85)', 
@@ -284,16 +229,16 @@
             red: 'rgba(220, 38, 38, 0.85)'
         };
 
-        // --- 2025.12.22 차트 데이터 ---
+        // --- 2025.12.29 차트 데이터 ---
 
         // 1. 제품별 총 접수 건수 차트
         const overallReceivedCtx = document.getElementById('overallReceivedChart').getContext('2d');
-        // WebSquare: 115, ProWorks: 31+5=36, Matrix Mobile: 1
-        const overallReceivedData = [115, 36, 1]; 
+        // WebSquare: 72, ProWorks: 21, Matrix Mobile: 1
+        const overallReceivedData = [72, 21, 1]; 
         new Chart(overallReceivedCtx, {
             type: 'bar',
             data: {
-                labels: ['WebSquare', 'ProWorks', 'Matrix Mobile'],
+                labels: ['WebSquare', 'ProWorks', 'Mobile'],
                 datasets: [{
                     label: '총 접수 건수',
                     data: overallReceivedData, 
@@ -309,7 +254,7 @@
                     x: { grid: { display: false } },
                     y: { 
                         beginAtZero: true, 
-                        suggestedMax: Math.max(...overallReceivedData) + 20,
+                        suggestedMax: Math.max(...overallReceivedData) + 10,
                         grid: { borderDash: [4, 4], color: '#e5e7eb' }
                     } 
                 }
@@ -318,12 +263,12 @@
 
         // 2. 제품별 진행 중 건수 (누적) 차트
         const overallInProgressCtx = document.getElementById('overallInProgressChart').getContext('2d');
-        // WebSquare: 25, ProWorks: 4+2=6, Matrix Mobile: 1
-        const overallInProgressData = [25, 6, 1]; 
+        // WebSquare: 18, ProWorks: 2+1=3, Matrix Mobile: 2
+        const overallInProgressData = [18, 3, 2]; 
         new Chart(overallInProgressCtx, {
             type: 'bar',
             data: {
-                labels: ['WebSquare', 'ProWorks', 'Matrix Mobile'],
+                labels: ['WebSquare', 'ProWorks', 'Mobile'],
                 datasets: [{
                     label: '진행 중 건수 (누적)',
                     data: overallInProgressData, 
@@ -353,9 +298,9 @@
             data: {
                 labels: ['엔지니어 개별 문의', '서비스데스크 W-Tech'],
                 datasets: [
-                    { label: '접수', data: [82, 33], backgroundColor: colors.blue, borderRadius: 4 }, 
-                    { label: '완료', data: [66, 24], backgroundColor: colors.green, borderRadius: 4 }, 
-                    { label: '진행중', data: [16, 9], backgroundColor: colors.orange, borderRadius: 4 } 
+                    { label: '접수', data: [50, 22], backgroundColor: colors.blue, borderRadius: 4 }, 
+                    { label: '완료', data: [35, 19], backgroundColor: colors.green, borderRadius: 4 }, 
+                    { label: '진행중', data: [15, 3], backgroundColor: colors.orange, borderRadius: 4 } 
                 ]
             },
             options: {
@@ -370,13 +315,13 @@
 
         // 4. WebSquare 진행 중 상세 차트
         const wsInProgressDetailCtx = document.getElementById('wsInProgressDetailChart').getContext('2d');
-        // 분석: 9 + 9 = 18, 지라: 7 + 0 = 7. 총 25건
+        // 분석: 8 + 2 = 10, 지라: 7 + 1 = 8. 총 18건
         new Chart(wsInProgressDetailCtx, {
             type: 'doughnut',
             data: {
                 labels: ['분석', '지라'],
                 datasets: [{
-                    data: [18, 7], 
+                    data: [10, 8], 
                     backgroundColor: [colors.lightBlue, colors.orange], 
                     borderWidth: 2,
                     borderColor: '#ffffff'
@@ -384,7 +329,7 @@
             },
             options: {
                 responsive: true, maintainAspectRatio: false,
-                cutout: '50%', // 두께 조정 (50%)
+                cutout: '50%',
                 layout: {
                     padding: 24 
                 },
@@ -394,12 +339,12 @@
                         color: '#333',
                         backgroundColor: 'rgba(255,255,255,0.9)', 
                         borderRadius: 4,
-                        font: { size: 15, weight: 'bold' }, // 폰트 사이즈 15px로 통일
+                        font: { size: 15, weight: 'bold' },
                         anchor: 'end', 
                         align: 'end',  
                         offset: 8,     
                         formatter: (value, ctx) => {
-                            return `${value}건`; // 비율 제거, 건수만 표시
+                            return `${value}건`; 
                         },
                         textAlign: 'center'
                     }
@@ -409,8 +354,8 @@
 
         // 5. WebSquare 지원 유형별 현황 차트
         const wsSupportTypeCtx = document.getElementById('wsSupportTypeChart').getContext('2d');
-        // 설치 8, 패치 1, 정기점검 52, 장애 1
-        const wsSupportTypeData = [8, 1, 52, 0]; 
+        // 설치 0, 패치 1, 정기점검 25, 장애 0
+        const wsSupportTypeData = [0, 1, 25, 0]; 
         new Chart(wsSupportTypeCtx, {
             type: 'bar',
             data: {
@@ -442,16 +387,16 @@
             data: {
                 labels: ['기술 문의/장애', '설치/패치'],
                 datasets: [
-                    { label: '접수', data: [31, 5], backgroundColor: colors.blue, borderRadius: 4 }, 
-                    { label: '완료', data: [29, 4], backgroundColor: colors.green, borderRadius: 4 }, 
-                    { label: '진행중 (누적)', data: [4, 2], backgroundColor: colors.orange, borderRadius: 4 } 
+                    { label: '접수', data: [20, 1], backgroundColor: colors.blue, borderRadius: 4 }, 
+                    { label: '완료', data: [19, 2], backgroundColor: colors.green, borderRadius: 4 }, 
+                    { label: '진행중 (누적)', data: [2, 1], backgroundColor: colors.orange, borderRadius: 4 } 
                 ]
             },
             options: {
                 responsive: true, maintainAspectRatio: false,
                 scales: { 
                     x: { grid: { display: false } },
-                    y: { beginAtZero: true, suggestedMax: 35, grid: { borderDash: [4, 4], color: '#e5e7eb' } } 
+                    y: { beginAtZero: true, suggestedMax: 25, grid: { borderDash: [4, 4], color: '#e5e7eb' } } 
                 },
                 plugins: { legend: { position: 'top', align: 'end', labels: { boxWidth: 12, font: { weight: 'bold' } } } }
             }
@@ -465,8 +410,8 @@
                 labels: ['기술 문의/장애', '설치/패치'],
                  datasets: [
                     { label: '접수', data: [1, 0], backgroundColor: colors.blue, borderRadius: 4 }, 
-                    { label: '완료', data: [1, 0], backgroundColor: colors.green, borderRadius: 4 }, 
-                    { label: '진행중 (누적)', data: [1, 0], backgroundColor: colors.orange, borderRadius: 4 } 
+                    { label: '완료', data: [0, 0], backgroundColor: colors.green, borderRadius: 4 }, 
+                    { label: '진행중 (누적)', data: [2, 0], backgroundColor: colors.orange, borderRadius: 4 } 
                 ]
             },
             options: {
