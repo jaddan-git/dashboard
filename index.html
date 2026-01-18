@@ -76,7 +76,7 @@
             <!-- Top Row: Issues & License -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 
-                <!-- Major Issue Part 1 -->
+                <!-- Major Issue (Part 1) -->
                 <div class="bg-red-50 border-l-8 border-red-500 p-5 rounded-r-xl shadow-sm">
                     <h3 class="text-lg font-bold text-red-700 mb-3 flex items-center">
                         <i class="fa-solid fa-triangle-exclamation mr-2"></i>주요 이슈 (1)
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 
-                <!-- Major Issue Part 2 (Moved from Other/System) -->
+                <!-- Major Issue (Part 2) - Moved Items -->
                 <div class="bg-orange-50 border-l-8 border-orange-400 p-5 rounded-r-xl shadow-sm">
                     <h3 class="text-lg font-bold text-orange-700 mb-3 flex items-center">
                         <i class="fa-solid fa-clock-rotate-left mr-2"></i>주요 이슈 (2)
@@ -106,10 +106,6 @@
                         <div>
                             <span class="text-orange-600 font-bold mr-1">[진행중]</span> <span class="font-bold">LGU+ / CJENM</span>
                             <span class="block text-sm text-gray-600 pl-2">- 보안취약점 패치 논의 / 모의해킹 취약점 조치</span>
-                        </div>
-                         <div>
-                            <span class="text-orange-600 font-bold mr-1">[진행중]</span> <span class="font-bold">수자원공사</span>
-                            <span class="block text-sm text-gray-600 pl-2">- WAS 서버 이전 작업 지원 (방문대기)</span>
                         </div>
                     </div>
                 </div>
@@ -176,7 +172,7 @@
                                 <ul class="space-y-3 text-sm text-gray-700">
                                     <li class="flex items-start">
                                         <span class="flex-shrink-0 bg-green-200 text-green-900 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">완료</span>
-                                        <div><span class="font-bold">더케이예다함:</span> 404 에러, 컴파일 캐릭터셋 문제 지원</div>
+                                        <div><span class="font-bold">더케이예다함:</span> 서비스호출 404, 컴파일 캐릭터셋 문제 지원</div>
                                     </li>
                                     <li class="flex items-start">
                                         <span class="flex-shrink-0 bg-green-200 text-green-900 text-xs font-bold px-2 py-0.5 rounded mr-2 mt-0.5">완료</span>
@@ -266,7 +262,7 @@
                             <li>
                                 <span class="font-bold text-gray-900 block mb-1">POC 자료</span>
                                 <span class="block pl-3 text-gray-600">- 26년 디자인 변경 (3월 예상)</span>
-                                <span class="block pl-3 text-gray-600">- 기능 예제 추가 및 단말 기능 파악</span>
+                                <span class="block pl-3 text-gray-600">- 기능 예제 추가</span>
                             </li>
                         </ul>
                     </div>
@@ -483,7 +479,7 @@
                             <i class="fa-solid fa-check-circle text-green-500 mt-1 mr-3 text-base"></i>
                             <div>
                                 <span class="text-base font-bold text-gray-900 block mb-1">SignSquare 온프레미스 구성</span>
-                                <span class="text-sm text-gray-700 block">- Core: Mac mini M4 Pro 기반</span>
+                                <span class="text-sm text-gray-700 block">- Core: Mac mini M4 Pro (192.168.100.221)</span>
                                 <span class="text-sm text-gray-700 block">- 변환 노드: Windows(WGear) / Linux(PDFSquare) 분리 검토</span>
                             </div>
                         </li>
@@ -533,7 +529,7 @@
                                 <h4 class="font-bold text-sm text-gray-800">결산 및 마감</h4>
                                 <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold">완료</span>
                             </div>
-                            <p class="text-sm text-gray-700">마감 및 결산지원</p>
+                            <p class="text-sm text-gray-700">마감 및 결산지원 완료, 비용 아웃룩/매출손익 오류 수정</p>
                         </div>
 
                         <!-- Card 4: Ops -->
@@ -630,7 +626,7 @@
                 }]
             },
             options: {
-                rotation: 90, 
+                rotation: 180, 
                 responsive: true, maintainAspectRatio: false,
                 cutout: '50%',
                 layout: {
@@ -650,10 +646,8 @@
                         font: { size: 15, weight: 'bold' },
                         anchor: 'end', 
                         align: 'end',  
-                        offset: (context) => {
-                             return context.dataIndex === 0 ? 10 : -15; 
-                        },
-                        formatter: (value) => value > 0 ? value + '\n' : null, 
+                        offset: 10,     
+                        formatter: (value) => value > 0 ? value : null, 
                         textAlign: 'center'
                     }
                 }
