@@ -57,7 +57,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-900" style="zoom: 125%;">
 
     <!-- Main Container: Max Width 1600px applied here -->
     <div class="mx-auto p-6 md:p-10" style="max-width: 1600px;">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 
-                <!-- Major Issue (Part 2) -->
+                <!-- Major Issue (Part 2) & Others -->
                 <div class="bg-orange-50 border-l-8 border-orange-400 p-5 rounded-r-xl shadow-sm">
                     <h3 class="text-lg font-bold text-orange-700 mb-3 flex items-center">
                         <i class="fa-solid fa-clock-rotate-left mr-2"></i>주요 이슈 (2) & 기타
@@ -265,7 +265,7 @@
                         <ul class="text-sm text-gray-700 space-y-3 mb-6">
                             <li>
                                 <span class="font-bold text-gray-900 block mb-1">릴리즈 노트</span>
-                                <span class="block pl-3 text-gray-600">- 한국어: SP5, AI 엔진/스튜디오</span>
+                                <span class="block pl-3 text-gray-600">- 한국어: SP5, AI 엔진/스튜디오 (01/27 게시)</span>
                                 <span class="block pl-3 text-gray-600">- 영어: AI 엔진/스튜디오 (01/27 게시)</span>
                             </li>
                             <li>
@@ -333,7 +333,7 @@
                                 <tr>
                                     <td>Studio</td>
                                     <td>0</td>
-                                    <td>1</td> <!-- Updated from 0 to 1 -->
+                                    <td>1</td> 
                                 </tr>
                                 <!-- WS SP5 -->
                                 <tr>
@@ -460,7 +460,7 @@
         </section>
 
         <!-- 4. 인프라 / 시스템 개발 -->
-        <section class="bg-white p-8 rounded-2xl shadow-md border-t-8 border-slate-600">
+        <section class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-slate-600">
             <div class="flex items-center mb-8">
                 <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mr-3 text-slate-700">
                     <i class="fa-solid fa-server text-xl"></i>
@@ -547,8 +547,8 @@
                                 <span class="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded font-bold">진행중</span>
                             </div>
                             <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
-                                <li>[완료] 영업담당자 변경 기능 추가 (재승인 없이 변경)</li>
-                                <li>[진행] 설치확인서 등록 로직 개선 (선택 제품 대상 갱신)</li>
+                                <li><span class="text-green-600 font-bold">[완료]</span> 영업담당자 변경 기능 추가 (재승인 없이 변경)</li>
+                                <li><span class="text-orange-600 font-bold">[진행]</span> 설치확인서 등록 로직 개선 (선택 제품 대상 갱신)</li>
                             </ul>
                         </div>
 
@@ -624,7 +624,7 @@
             }
         });
 
-        // 4. WS Detail (Donut) - Label adjusted per request
+        // 4. WS Detail (Donut) - Label adjusted per request (Left and Right)
         new Chart(document.getElementById('wsInProgressDetailChart'), {
             type: 'doughnut',
             data: {
@@ -658,7 +658,7 @@
                         anchor: 'end', 
                         align: 'end',  
                         offset: (context) => {
-                             return context.dataIndex === 0 ? 10 : 5; 
+                             return context.dataIndex === 0 ? 10 : -15; 
                         },
                         formatter: (value) => value > 0 ? value + '\n' : null, 
                         textAlign: 'center'
@@ -672,7 +672,7 @@
             type: 'bar',
             data: {
                 labels: ['설치', '패치', '점검', '장애'],
-                datasets: [{ data: [1, 2, 29, 0], backgroundColor: [colors.purple, colors.lightBlue, colors.green, colors.red], borderRadius: 4 }]
+                datasets: [{ data: [3, 5, 29, 0], backgroundColor: [colors.purple, colors.lightBlue, colors.green, colors.red], borderRadius: 4 }]
             },
             options: commonOptions
         });
