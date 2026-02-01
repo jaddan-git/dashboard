@@ -57,7 +57,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900" style="zoom: 115%;">
+<body class="bg-gray-50 text-gray-900" style="zoom:115%">
 
     <!-- Main Container: Max Width 1600px applied here -->
     <div class="mx-auto p-6 md:p-10" style="max-width: 1600px;">
@@ -100,7 +100,7 @@
                     </h3>
                     <div class="text-base text-gray-800 leading-snug space-y-2">
                         <div>
-                            <span class="text-orange-600 font-bold mr-1">[진행중]</span> <span class="font-bold">건설공제조합</span>
+                            <span class="text-green-600 font-bold mr-1">[완료]</span> <span class="font-bold">건설공제조합</span>
                             <span class="block text-sm text-gray-600 pl-2">- 개발/테스트 서버 이행 방문 지원 (1/31)</span>
                         </div>
                         <div>
@@ -244,7 +244,7 @@
                     <!-- POC Card -->
                     <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-sm">
                         <h3 class="font-bold text-lg text-gray-800 mb-3 pb-2 border-b border-gray-300 flex justify-between">
-                            <span><i class="fa-solid fa-flask mr-2 text-pink-500"></i>POC</span>
+                            <span><i class="fa-solid fa-flask mr-2 text-pink-500"></i>POC 진행</span>
                         </h3>
                         <div class="space-y-3 text-sm text-gray-700">
                             <!-- Parent Item -->
@@ -333,7 +333,7 @@
                                 <tr>
                                     <td>Studio</td>
                                     <td>0</td>
-                                    <td>1</td> 
+                                    <td>1</td>
                                 </tr>
                                 <!-- WS SP5 -->
                                 <tr>
@@ -371,7 +371,7 @@
                                 <li><strong>RC 엔진:</strong> AI, SP5 테스트 완료</li>
                                 <li><strong>Studio:</strong> AI 테스트 진행중</li>
                                 <li>DEVPACK 배포 완료 (1/29)</li>
-                                <li>AI Talk+ 환경 설정 및 테스트 진행</li>
+                                <li><strong>지원:</strong> AI Talk+ 개발 지원</li>
                              </ul>
                         </div>
                     </div>
@@ -452,7 +452,7 @@
                     </table>
                     
                     <div class="mt-2 p-2 bg-blue-50 border border-blue-100 rounded text-xs text-blue-800">
-                        <strong>[진행]</strong> 메리츠화재 (1/26~), KDB생명(완료)
+                        <strong>[진행]</strong> 메리츠화재 (진행중), KDB생명(완료)
                     </div>
                 </div>
 
@@ -602,9 +602,9 @@
             data: {
                 labels: ['개별문의', 'W-Tech'],
                 datasets: [
-                    { label: '접수', data: [73, 32], backgroundColor: colors.blue, borderRadius: 4 },
-                    { label: '완료', data: [65, 28], backgroundColor: colors.green, borderRadius: 4 },
-                    { label: '진행', data: [8, 4], backgroundColor: colors.orange, borderRadius: 4 }
+                    { label: '접수', data: [62, 43], backgroundColor: colors.blue, borderRadius: 4 },
+                    { label: '완료', data: [52, 41], backgroundColor: colors.green, borderRadius: 4 },
+                    { label: '진행', data: [10, 2], backgroundColor: colors.orange, borderRadius: 4 }
                 ]
             },
             options: { 
@@ -672,7 +672,7 @@
             type: 'bar',
             data: {
                 labels: ['설치', '패치', '점검', '장애'],
-                datasets: [{ data: [3, 5, 29, 0], backgroundColor: [colors.purple, colors.lightBlue, colors.green, colors.red], borderRadius: 4 }]
+                datasets: [{ data: [1, 0, 11, 0], backgroundColor: [colors.purple, colors.lightBlue, colors.green, colors.red], borderRadius: 4 }]
             },
             options: commonOptions
         });
@@ -683,9 +683,9 @@
             data: {
                 labels: ['문의/장애', '설치/패치'],
                 datasets: [
-                    { label: '접수', data: [19, 0], backgroundColor: colors.blue, borderRadius: 4 },
-                    { label: '완료', data: [18, 0], backgroundColor: colors.green, borderRadius: 4 },
-                    { label: '진행', data: [1, 0], backgroundColor: colors.orange, borderRadius: 4 }
+                    { label: '접수', data: [19, 2], backgroundColor: colors.blue, borderRadius: 4 },
+                    { label: '완료', data: [18, 1], backgroundColor: colors.green, borderRadius: 4 },
+                    { label: '진행', data: [2, 3], backgroundColor: colors.orange, borderRadius: 4 }
                 ]
             },
             options: { 
